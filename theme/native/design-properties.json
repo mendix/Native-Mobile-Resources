@@ -1,0 +1,15 @@
+{
+    "Widget": [
+        {
+            "name": "test",
+            "type": "Dropdown",
+            "description": "The spacing above this element.",
+            "options": [
+                {
+                    "name": "Inner small",
+                    "class": "xxxx"
+                }
+            ]
+        }
+    ]
+}
