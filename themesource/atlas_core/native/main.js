@@ -8,14 +8,14 @@ import * as spacing from "./core/base/spacing";
 //
 //
 // Components
+import * as widgetsAccordion from "./core/widgets/accordion";
+import * as helpersAccordion from "./core/helpers/accordion";
 import * as widgetsActivityIndicator from "./core/widgets/activityindicator";
 import * as helpersActivityIndicator from "./core/helpers/activityindicator";
 import * as widgetsAnimation from "./core/widgets/animation";
 import * as widgetsBackgroundImage from "./core/widgets/backgroundimage";
 import * as widgetsBadge from "./core/widgets/badge";
 import * as helpersBadge from "./core/helpers/badge";
-import * as widgetsBarChart from "./core/widgets/barchart";
-import * as helpersBarChart from "./core/helpers/barchart";
 import * as widgetsBottomSheet from "./core/widgets/bottomsheet";
 import * as widgetsButtons from "./core/widgets/buttons";
 import * as helpersButtons from "./core/helpers/buttons";
@@ -28,8 +28,6 @@ import * as widgetsDropDown from "./core/widgets/dropdown";
 import * as widgetsFeedback from "./core/widgets/feedback";
 import * as widgetsFloatingActionButton from "./core/widgets/floatingactionbutton";
 import * as helpersFloatingActionButton from "./core/helpers/floatingactionbutton";
-import * as widgetsGroupBox from "./core/widgets/groupbox";
-import * as helpersGroupBox from "./core/helpers/groupbox";
 import * as widgetsImage from "./core/widgets/image";
 import * as helpersImage from "./core/helpers/image";
 import * as widgetsIntroScreen from "./core/widgets/introscreen";
@@ -37,6 +35,8 @@ import * as helpersIntroScreen from "./core/helpers/introscreen";
 import * as widgetsLayoutGrid from "./core/widgets/layoutgrid";
 import * as widgetsLineChart from "./core/widgets/linechart";
 import * as helpersLineChart from "./core/helpers/linechart";
+import * as widgetsBarChart from "./core/widgets/barchart";
+import * as helpersBarChart from "./core/helpers/barchart";
 import * as widgetsListView from "./core/widgets/listview";
 import * as helpersListView from "./core/helpers/listview";
 import * as widgetsListViewSwipe from "./core/widgets/listviewswipe";
@@ -80,6 +80,8 @@ import * as page from "./layouts/page";
 module.exports = [
     flex,
     spacing,
+    !exclusionVariables.excludeAccordion ? widgetsAccordion : {},
+    !exclusionVariables.excludeAccordion && !exclusionVariables.excludeAccordionHelpers ? helpersAccordion : {},
     !exclusionVariables.excludeActivityIndicator ? widgetsActivityIndicator : {},
     !exclusionVariables.excludeActivityIndicator && !exclusionVariables.excludeActivityIndicatorHelpers
         ? helpersActivityIndicator
@@ -88,8 +90,6 @@ module.exports = [
     !exclusionVariables.excludeBackgroundImage ? widgetsBackgroundImage : {},
     !exclusionVariables.excludeBadge ? widgetsBadge : {},
     !exclusionVariables.excludeBadge && !exclusionVariables.excludeBadgeHelpers ? helpersBadge : {},
-    !exclusionVariables.excludeBarChart ? widgetsBarChart : {},
-    !exclusionVariables.excludeBarChart && !exclusionVariables.excludeBarChartHelpers ? helpersBarChart : {},
     !exclusionVariables.excludeBottomSheet ? widgetsBottomSheet : {},
     !exclusionVariables.excludeButtons ? widgetsButtons : {},
     !exclusionVariables.excludeButtons && !exclusionVariables.excludeButtonsHelpers ? helpersButtons : {},
@@ -102,8 +102,6 @@ module.exports = [
     !exclusionVariables.excludeFeedback ? widgetsFeedback : {},
     !exclusionVariables.excludeFAB ? widgetsFloatingActionButton : {},
     !exclusionVariables.excludeFAB && !exclusionVariables.excludeFABHelpers ? helpersFloatingActionButton : {},
-    !exclusionVariables.excludeGroupBox ? widgetsGroupBox : {},
-    !exclusionVariables.excludeGroupBox && !exclusionVariables.excludeGroupBoxHelpers ? helpersGroupBox : {},
     !exclusionVariables.excludeImage ? widgetsImage : {},
     !exclusionVariables.excludeImage && !exclusionVariables.excludeImageHelpers ? helpersImage : {},
     !exclusionVariables.excludeIntroScreen ? widgetsIntroScreen : {},
@@ -111,6 +109,8 @@ module.exports = [
     !exclusionVariables.excludeLayoutGrid ? widgetsLayoutGrid : {},
     !exclusionVariables.excludeLineChart ? widgetsLineChart : {},
     !exclusionVariables.excludeLineChart && !exclusionVariables.excludeLineChartHelpers ? helpersLineChart : {},
+    !exclusionVariables.excludeBarChart ? widgetsBarChart : {},
+    !exclusionVariables.excludeBarChart && !exclusionVariables.excludeBarChartHelpers ? helpersBarChart : {},
     !exclusionVariables.excludeListView ? widgetsListView : {},
     !exclusionVariables.excludeListView && !exclusionVariables.excludeListViewHelpers ? helpersListView : {},
     !exclusionVariables.excludeListViewSwipe ? widgetsListViewSwipe : {},

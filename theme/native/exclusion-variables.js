@@ -1,6 +1,9 @@
 // == Variables to exclude files
 // ## Reduce the amount of files imported from the Atlas_Core module
 // -------------------------------------------------------------------------------------------------------------------//
+// Accordion
+export const excludeAccordion = false;
+export const excludeAccordionHelpers = false;
 // Activity Indicator
 export const excludeActivityIndicator = false;
 export const excludeActivityIndicatorHelpers = false;
@@ -33,9 +36,6 @@ export const excludeFeedback = false;
 // Floating Action Button
 export const excludeFAB = false;
 export const excludeFABHelpers = false;
-// Group Box
-export const excludeGroupBox = false;
-export const excludeGroupBoxHelpers = false;
 // Image
 export const excludeImage = false;
 export const excludeImageHelpers = false;

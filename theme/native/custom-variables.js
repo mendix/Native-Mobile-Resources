@@ -233,7 +233,6 @@ export const input = {
         rippleColor: contrast.lowest
     },
     itemContainer: {
-        maxWidth: 500,
         paddingVertical: 12,
         paddingHorizontal: spacing.regular,
         backgroundColor: background.primary
@@ -304,6 +303,32 @@ export const navigation = {
 export const container = {
     containerDisabled: {
         opacity: 0.6
+    }
+};
+//
+// Accordion Styles
+export const accordion = {
+    container: {
+        backgroundColor: background.primary,
+        borderColor: border.color
+    },
+    groupHeader: {
+        container: {
+            paddingVertical: spacing.regular,
+            paddingHorizontal: spacing.regular
+        },
+        heading: {
+            color: font.colorTitle
+        },
+        icon: {
+            size: font.sizeLarge,
+            color: font.colorTitle
+        }
+    },
+    groupContent: {
+        paddingTop: spacing.small,
+        paddingBottom: spacing.large,
+        paddingHorizontal: spacing.regular
     }
 };
 //
@@ -554,29 +579,5 @@ export const slider = {
         size: 24,
         borderColor: contrast.lowest,
         backgroundColor: background.secondary
-    }
-};
-//
-// Group Box Styles
-export const groupbox = {
-    container: {
-        borderWidth: border.width,
-        borderColor: button.primary.borderColor,
-        borderRadius: border.radiusSmall
-    },
-    header: {
-        container: {
-            backgroundColor: button.primary.backgroundColor,
-            paddingHorizontal: spacing.regular,
-            paddingVertical: spacing.small
-        },
-        icon: {
-            size: 16,
-            color: button.primary.color
-        }
-    },
-    content: {
-        paddingHorizontal: spacing.regular,
-        paddingVertical: spacing.small
     }
 };

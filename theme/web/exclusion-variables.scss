@@ -1,8 +1,20 @@
+//== Core style exclusion
+$exclude-bootstrap: false;
+$exclude-mxui: false;
+$exclude-animations: false;
+$exclude-flex: false;
+$exclude-spacing: false;
+$exclude-base: false;
+$exclude-login: false;
+
 //== Widget style exclusion
+$exclude-accordion: false;
+$exclude-accordion-helpers: false;
 $exclude-background-helpers: false;
 $exclude-badge: false;
 $exclude-badge-button: false;
 $exclude-badge-button-helpers: false;
+$exclude-barcode-scanner: false;
 $exclude-button: false;
 $exclude-button-helpers: false;
 $exclude-check-box: false;
@@ -12,6 +24,8 @@ $exclude-data-grid: false;
 $exclude-data-grid-helpers: false;
 $exclude-data-view: false;
 $exclude-data-picker: false;
+$exclude-gallery: false;
+$exclude-gallery-helpers: false;
 $exclude-glyphicon: false;
 $exclude-grid: false;
 $exclude-group-box: false;
@@ -54,5 +68,13 @@ $exclude-tab-container-helpers: false;
 $exclude-template-grid: false;
 $exclude-template-grid-helpers: false;
 $exclude-timeline: false;
+$exclude-tree-node: false;
+$exclude-tree-node-helpers: false;
 $exclude-typography: false;
 $exclude-typography-helpers: false;
+
+//== Layouts style exclusion
+$exclude-layout-atlas: false;
+$exclude-layout-atlas-phone: false;
+$exclude-layout-atlas-responsive: false;
+$exclude-layout-atlas-tablet: false;

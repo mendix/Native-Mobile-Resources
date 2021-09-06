@@ -238,7 +238,6 @@ let input = {
         rippleColor: contrast.lowest
     },
     itemContainer: {
-        maxWidth: 500,
         paddingVertical: 12,
         paddingHorizontal: spacing.regular,
         backgroundColor: background.primary
@@ -317,6 +316,33 @@ let container = {
     }
 };
 container = merge(container, custom.container || {});
+//
+// Accordion Styles
+let accordion = {
+    container: {
+        backgroundColor: background.primary,
+        borderColor: border.color
+    },
+    groupHeader: {
+        container: {
+            paddingVertical: spacing.regular,
+            paddingHorizontal: spacing.regular
+        },
+        heading: {
+            color: font.colorTitle
+        },
+        icon: {
+            size: font.sizeLarge,
+            color: font.colorTitle
+        }
+    },
+    groupContent: {
+        paddingTop: spacing.small,
+        paddingBottom: spacing.large,
+        paddingHorizontal: spacing.regular
+    }
+};
+accordion = merge(accordion, custom.accordion || {});
 //
 // Badge Styles
 let badge = {
@@ -579,30 +605,5 @@ let slider = {
 };
 slider = merge(slider, custom.slider || {});
 //
-// Group Box Styles
-let groupbox = {
-    container: {
-        borderWidth: border.width,
-        borderColor: button.primary.borderColor,
-        borderRadius: border.radiusSmall
-    },
-    header: {
-        container: {
-            backgroundColor: button.primary.backgroundColor,
-            paddingHorizontal: spacing.regular,
-            paddingVertical: spacing.small
-        },
-        icon: {
-            size: 16,
-            color: button.primary.color
-        }
-    },
-    content: {
-        paddingHorizontal: spacing.regular,
-        paddingVertical: spacing.small
-    }
-};
-groupbox = merge(groupbox, custom.groupbox || {});
-//
 export * from "../../../theme/native/custom-variables";
-export { brand, backgroundDefaults, background, border, button, contrast, fontDefaults, font, input, image, layoutGrid, listView, navigation, spacing, container, tabContainer, badge, floatingActionButton, introScreen, listViewSwipe, progressBar, progressCircle, slider, rating, groupbox };
+export { accordion, brand, backgroundDefaults, background, border, button, contrast, fontDefaults, font, input, image, layoutGrid, listView, navigation, spacing, container, tabContainer, badge, floatingActionButton, introScreen, listViewSwipe, progressBar, progressCircle, slider, rating };
