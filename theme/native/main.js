@@ -1,6 +1,7 @@
 const myCustomSyling = {
     slices:
     {
+        padding: 60,
         innerRadius: 50,
         customStyles: {
             mySlice1: {
