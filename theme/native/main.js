@@ -1,4 +1,4 @@
-const myCustomSyling = {
+const myCustomStyling = {
     slices:
     {
         padding: 60,
@@ -42,4 +42,4 @@ const myCustomSyling = {
     }
 }
 
-export { myCustomSyling };
+export { myCustomStyling };
