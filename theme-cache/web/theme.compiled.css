@@ -15399,76 +15399,6 @@ body[dir=rtl] .mx-header-right {
 }
 
 /* ==========================================================================
-   Gallery
-
-   Override styles of Gallery widget
-========================================================================== */
-.widget-gallery .widget-gallery-items {
-  grid-gap: 8px;
-}
-
-/* ==========================================================================
-   Gallery default
-
-//== Design Properties
-//## Helper classes to change the look and feel of the component
-========================================================================== */
-.widget-gallery-bordered-all .widget-gallery-item {
-  border: 1px solid #ced0d3;
-}
-
-.widget-gallery-bordered-vertical .widget-gallery-item {
-  border-color: #ced0d3;
-  border-style: solid;
-  border-width: 0;
-  border-left-width: 1px;
-  border-right-width: 1px;
-}
-
-.widget-gallery-bordered-horizontal .widget-gallery-item {
-  border-color: #ced0d3;
-  border-style: solid;
-  border-width: 0;
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-}
-
-.widget-gallery-hover .widget-gallery-items .widget-gallery-item:hover {
-  background-color: #f5f6f6;
-}
-
-.widget-gallery-striped .widget-gallery-item:nth-child(odd) {
-  background-color: #fafafb;
-}
-.widget-gallery-striped .widget-gallery-item:nth-child(even) {
-  background-color: #fff;
-}
-
-.widget-gallery.widget-gallery-gridgap-none .widget-gallery-items {
-  gap: 0;
-}
-
-.widget-gallery.widget-gallery-gridgap-small .widget-gallery-items {
-  gap: 8px;
-}
-
-.widget-gallery.widget-gallery-gridgap-medium .widget-gallery-items {
-  gap: 16px;
-}
-
-.widget-gallery.widget-gallery-gridgap-large .widget-gallery-items {
-  gap: 24px;
-}
-
-.widget-gallery-pagination-left .widget-gallery-pagination .pagination-bar {
-  justify-content: flex-start;
-}
-
-.widget-gallery-pagination-center .widget-gallery-pagination .pagination-bar {
-  justify-content: center;
-}
-
-/* ==========================================================================
    Glyphicon
 
    Default Mendix glyphicon
@@ -20543,48 +20473,6 @@ h6,
 }
 .widget-accordion.widget-accordion-compact > .widget-accordion-group > .widget-accordion-group-content {
   padding: 4px 8px 16px 8px;
-}
-
-/* ==========================================================================
-   Tree Node
-
-//== Design Properties
-//## Helper classes to change the look and feel of the component
-========================================================================== */
-.widget-tree-view-hover .widget-tree-view-branch:hover > .widget-tree-view-branch-header {
-  background-color: #f5f6f6;
-}
-
-.widget-tree-view-bordered-horizontal .widget-tree-view-branch > .widget-tree-view-branch-header {
-  border-width: 0;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: #ced0d3;
-}
-
-.widget-tree-view-bordered-all {
-  border: 1px solid #ced0d3;
-  border-radius: 8px;
-  overflow: hidden;
-}
-.widget-tree-view-bordered-all .widget-tree-view-body:not(.widget-tree-view-branch-loading) {
-  border-width: 0;
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-top-color: #ced0d3;
-}
-.widget-tree-view-bordered-all .widget-tree-view-branch:not(:first-of-type) > .widget-tree-view-branch-header {
-  border-width: 0;
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-top-color: #ced0d3;
-}
-
-.widget-tree-view-bordered-none {
-  border-width: 0;
-}
-.widget-tree-view-bordered-none .widget-tree-view-branch > .widget-tree-view-branch-header {
-  border-width: 0;
 }
 
 /*
