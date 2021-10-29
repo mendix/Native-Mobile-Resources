@@ -59,6 +59,8 @@ import * as widgetsReferenceSelector from "./core/widgets/referenceselector";
 import * as widgetsSafeAreaView from "./core/widgets/safeareaview";
 import * as widgetsSlider from "./core/widgets/slider";
 import * as helpersSlider from "./core/helpers/slider";
+import * as widgetsSwitch from "./core/widgets/switch";
+import * as helpersSwitch from "./core/helpers/switch";
 import * as widgetsTabContainer from "./core/widgets/tabcontainer";
 import * as helpersTabContainer from "./core/helpers/tabcontainer";
 import * as widgetsTextArea from "./core/widgets/textarea";
@@ -138,6 +140,8 @@ module.exports = [
     !exclusionVariables.excludeSafeAreaView ? widgetsSafeAreaView : {},
     !exclusionVariables.excludeSlider ? widgetsSlider : {},
     !exclusionVariables.excludeSlider && !exclusionVariables.excludeSliderHelpers ? helpersSlider : {},
+    !exclusionVariables.excludeSwitch ? widgetsSwitch : {},
+    !exclusionVariables.excludeSwitch && !exclusionVariables.excludeSwitchHelpers ? helpersSwitch : {},
     !exclusionVariables.excludeTabContainer ? widgetsTabContainer : {},
     !exclusionVariables.excludeTabContainer && !exclusionVariables.excludeTabContainerHelpers
         ? helpersTabContainer
