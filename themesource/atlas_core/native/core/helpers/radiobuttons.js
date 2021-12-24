@@ -7,113 +7,85 @@ To customize any core styling, copy the part you want to customize to styles/nat
 ==========================================================================
 */
 import { brand } from "../../../../../theme/native/custom-variables";
-export const radioPrimary = {
-    circularBtnStyle: {
+// Radio buttons properties
+export const radioButtonsPrimary = {
+    circularButtonStyle: {
         borderColor: brand.primary
     },
-    activeBtnStyle: {
+    activeButtonStyle: {
         backgroundColor: brand.primary
     },
-    radioItemTitleStyle: {
+    radioButtonItemTitleStyle: {
         color: brand.primary
     }
 };
-export const radioInfo = {
-    circularBtnStyle: {
-        borderColor: brand.info
-    },
-    activeBtnStyle: {
-        backgroundColor: brand.info
-    },
-    radioItemTitleStyle: {
-        color: brand.info
-    }
-};
-export const radioDanger = {
-    circularBtnStyle: {
-        borderColor: brand.danger
-    },
-    activeBtnStyle: {
-        backgroundColor: brand.danger
-    },
-    radioItemTitleStyle: {
-        color: brand.danger
-    }
-};
-export const radioDangerLight = {
-    circularBtnStyle: {
-        borderColor: brand.dangerLight
-    },
-    activeBtnStyle: {
-        backgroundColor: brand.dangerLight
-    },
-    radioItemTitleStyle: {
-        color: brand.dangerLight
-    }
-};
-export const radioInfoLight = {
-    circularBtnStyle: {
-        borderColor: brand.infoLight
-    },
-    activeBtnStyle: {
-        backgroundColor: brand.infoLight
-    },
-    radioItemTitleStyle: {
-        color: brand.infoLight
-    }
-};
-export const radioPrimaryLight = {
-    circularBtnStyle: {
-        borderColor: brand.primaryLight
-    },
-    activeBtnStyle: {
-        backgroundColor: brand.primaryLight
-    },
-    radioItemTitleStyle: {
-        color: brand.primaryLight
-    }
-};
-export const radioSuccess = {
-    circularBtnStyle: {
+export const radioButtonsSuccess = {
+    circularButtonStyle: {
         borderColor: brand.success
     },
-    activeBtnStyle: {
+    activeButtonStyle: {
         backgroundColor: brand.success
     },
-    radioItemTitleStyle: {
+    radioButtonItemTitleStyle: {
         color: brand.success
     }
 };
-export const radioSuccessLight = {
-    circularBtnStyle: {
-        borderColor: brand.successLight
-    },
-    activeBtnStyle: {
-        backgroundColor: brand.successLight
-    },
-    radioItemTitleStyle: {
-        color: brand.successLight
-    }
-};
-export const radioWarning = {
-    circularBtnStyle: {
+export const radioButtonsWarning = {
+    circularButtonStyle: {
         borderColor: brand.warning
     },
-    activeBtnStyle: {
+    activeButtonStyle: {
         backgroundColor: brand.warning
     },
-    radioItemTitleStyle: {
+    radioButtonItemTitleStyle: {
         color: brand.warning
     }
 };
-export const radioWarningLight = {
-    circularBtnStyle: {
-        borderColor: brand.warningLight
+export const radioButtonsDanger = {
+    circularButtonStyle: {
+        borderColor: brand.danger
     },
-    activeBtnStyle: {
-        backgroundColor: brand.warningLight
+    activeButtonStyle: {
+        backgroundColor: brand.danger
     },
-    radioItemTitleStyle: {
-        color: brand.warningLight
+    radioButtonItemTitleStyle: {
+        color: brand.danger
+    }
+};
+export const radioButtonsInfo = {
+    circularButtonStyle: {
+        borderColor: brand.info
+    },
+    activeButtonStyle: {
+        backgroundColor: brand.info
+    },
+    radioButtonItemTitleStyle: {
+        color: brand.info
+    }
+};
+// Radio buttons label properties
+export const radioButtonsLabelPrimary = {
+    labelTextStyle: {
+        color: brand.primary
+    }
+};
+export const radioButtonsLabelSuccess = {
+    labelTextStyle: {
+        color: brand.success
+    }
+};
+export const radioButtonsLabelWarning = {
+    labelTextStyle: {
+        color: brand.warning
+    }
+};
+export const radioButtonsLabelDanger = {
+    labelTextStyle: {
+        color: brand.danger
+    }
+};
+export const radioButtonsLabelInfo = {
+    labelTextStyle: {
+        color: brand.info
     }
 };
