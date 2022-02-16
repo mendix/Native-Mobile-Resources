@@ -42,4 +42,11 @@ const myCustomStyling = {
     }
 }
 
-export { myCustomStyling };
+const customWebView = {
+    container: {
+        borderColor: "red",
+        borderWidth: 10
+    }
+}
+
+export { myCustomStyling, customWebView };
