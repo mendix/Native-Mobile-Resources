@@ -7,7 +7,9 @@ import Geolocation from '@react-native-community/geolocation';
  *
  * Since this can compromise privacy, the position is not available unless the user approves it. The web browser will request the permission at the first time the location is requested. When denied by the user it will not prompt a second time.
  *
- * On hybrid and native platforms the permission can be requested with the `RequestLocationPermission` action.
+ * On hybrid and native platforms the permission should be requested with the `RequestLocationPermission` action.
+ *
+ * For good user experience, disable the nanoflow during action using property `Disabled during action` if you’re using `Call a nanoflow button` to run JS Action `Get current location with minimum accuracy`.
  *
  * Best practices:
  * https://developers.google.com/web/fundamentals/native-hardware/user-location/
@@ -19,22 +21,45 @@ import Geolocation from '@react-native-community/geolocation';
  */
 async function GetCurrentLocationMinimumAccuracy(timeout, maximumAge, highAccuracy, minimumAccuracy) {
     // BEGIN USER CODE
-    if (navigator && navigator.product === "ReactNative" && !navigator.geolocation) {
-        navigator.geolocation = Geolocation;
+    let reactNativeModule;
+    let geolocationModule;
+    if (navigator && navigator.product === "ReactNative") {
+        reactNativeModule = require("react-native");
+        if (!reactNativeModule) {
+            return Promise.reject(new Error("React Native module could not be found"));
+        }
+        if (reactNativeModule.NativeModules.RNFusedLocation) {
+            geolocationModule = (await import('react-native-geolocation-service')).default;
+        }
+        else if (reactNativeModule.NativeModules.RNCGeolocation) {
+            geolocationModule = Geolocation;
+        }
+        else {
+            return Promise.reject(new Error("Geolocation module could not be found"));
+        }
+    }
+    else if (navigator && navigator.geolocation) {
+        geolocationModule = navigator.geolocation;
+    }
+    else {
+        return Promise.reject(new Error("Geolocation module could not be found"));
     }
     return new Promise((resolve, reject) => {
+        if (!geolocationModule) {
+            return reject(new Error("Geolocation module could not be found"));
+        }
         const options = getOptions();
         // This action is only required while running in PWA or hybrid.
         if (navigator && (!navigator.product || navigator.product !== "ReactNative")) {
             // This ensures the browser will not ignore the maximumAge https://stackoverflow.com/questions/3397585/navigator-geolocation-getcurrentposition-sometimes-works-sometimes-doesnt/31916631#31916631
-            navigator.geolocation.getCurrentPosition(
+            geolocationModule.getCurrentPosition(
             // eslint-disable-next-line @typescript-eslint/no-empty-function
             () => { }, 
             // eslint-disable-next-line @typescript-eslint/no-empty-function
             () => { }, {});
         }
-        const watchId = navigator.geolocation.watchPosition(onSuccess, onError, options);
-        const timeStart = Date.now();
+        const timeoutId = setTimeout(onTimeout, Number(timeout));
+        const watchId = geolocationModule.watchPosition(onSuccess, onError, options);
         let lastAccruedPosition;
         function createGeolocationObject(position) {
             mx.data.create({
@@ -43,19 +68,24 @@ async function GetCurrentLocationMinimumAccuracy(timeout, maximumAge, highAccura
                 error: () => reject(new Error("Could not create 'NanoflowCommons.Geolocation' object to store location"))
             });
         }
+        function onTimeout() {
+            geolocationModule === null || geolocationModule === void 0 ? void 0 : geolocationModule.clearWatch(watchId);
+            if (lastAccruedPosition) {
+                createGeolocationObject(lastAccruedPosition);
+            }
+            else {
+                reject(new Error("Timeout expired"));
+            }
+        }
         function onSuccess(position) {
-            if (watchId && (!minimumAccuracy || minimumAccuracy >= position.coords.accuracy)) {
-                navigator.geolocation.clearWatch(watchId);
+            if (!minimumAccuracy || Number(minimumAccuracy) >= position.coords.accuracy) {
+                clearTimeout(timeoutId);
+                geolocationModule === null || geolocationModule === void 0 ? void 0 : geolocationModule.clearWatch(watchId);
                 createGeolocationObject(position);
             }
             else {
                 if (!lastAccruedPosition || position.coords.accuracy < lastAccruedPosition.coords.accuracy) {
                     lastAccruedPosition = position;
-                }
-                const timeDiff = Date.now() - timeStart;
-                if (!timeout || timeout.lte(timeDiff)) {
-                    navigator.geolocation.clearWatch(watchId);
-                    createGeolocationObject(lastAccruedPosition);
                 }
             }
         }
@@ -63,8 +93,19 @@ async function GetCurrentLocationMinimumAccuracy(timeout, maximumAge, highAccura
             return reject(new Error(error.message));
         }
         function getOptions() {
-            const timeoutNumber = timeout && Number(timeout.toString());
+            let timeoutNumber = timeout && Number(timeout.toString());
             const maximumAgeNumber = maximumAge && Number(maximumAge.toString());
+            // If the timeout is 0 or undefined (empty), it causes a crash on iOS.
+            // If the timeout is undefined (empty); we set timeout to 30 sec (default timeout)
+            // If the timeout is 0; we set timeout to 1 hour (no timeout)
+            if ((reactNativeModule === null || reactNativeModule === void 0 ? void 0 : reactNativeModule.Platform.OS) === "ios") {
+                if (timeoutNumber === undefined) {
+                    timeoutNumber = 30000;
+                }
+                else if (timeoutNumber === 0) {
+                    timeoutNumber = 3600000;
+                }
+            }
             return {
                 timeout: timeoutNumber,
                 maximumAge: maximumAgeNumber,
