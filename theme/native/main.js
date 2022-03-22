@@ -49,4 +49,10 @@ const customWebView = {
     }
 }
 
-export { myCustomStyling, customWebView };
+const customQRCode = {
+    qrcode: {
+        backgroundColor: "red"
+    }
+}
+
+export { myCustomStyling, customWebView, customQRCode };
