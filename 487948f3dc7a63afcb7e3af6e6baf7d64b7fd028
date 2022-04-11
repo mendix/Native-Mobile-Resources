@@ -1,0 +1,1 @@
+{"BranchName":"e2e-toggle-button-native","ModelerVersion":"9.10.0.36429","ModelChanges":[{"Status":"Modified","UnitID":"1db89d7f-772a-49bc-b91f-fef74bdeaf4a","UnitType":"Microflows$Nanoflow","UnitName":"ACT_ToggleButtonOnChange","Module":"ToggleButtons"}],"RelatedStories":[],"isWebModelerCommit":false,"HasModelerVersion":true}
