@@ -55,4 +55,13 @@ const customQRCode = {
     }
 }
 
-export { myCustomStyling, customWebView, customQRCode };
+const customToggleButtons = {
+    text: {
+        color: "green"
+    },
+    activeButtonText: {
+        color: "green"
+    }
+}
+
+export { myCustomStyling, customWebView, customQRCode, customToggleButtons };
