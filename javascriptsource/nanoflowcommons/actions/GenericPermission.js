@@ -10,9 +10,9 @@ import { Alert, Platform } from 'react-native';
 import { check, RESULTS, request, openSettings, PERMISSIONS } from 'react-native-permissions';
 
 // BEGIN EXTRA CODE
-function handleBlockedPermission() {
-    Alert.alert("title", "need to go to settings for activation", [
-        // draft text
+function handleBlockedPermission(permission) {
+    const permissionName = permission.replace(/_IOS|_ANDROID/, "");
+    Alert.alert("", `Please allow ${permissionName} access`, [
         { text: "go to settings", onPress: () => openSettings() },
         { text: "cancel" }
     ]);
@@ -43,7 +43,6 @@ export async function GenericPermission(permission) {
         console.error(`${permission} permission is not found`);
         return Promise.resolve("unavailable");
     }
-    console.error("permission name", mappedPermissionName)
     const permissionStatus = await check(mappedPermissionName);
     switch (permissionStatus) {
         case RESULTS.GRANTED:
@@ -51,7 +50,7 @@ export async function GenericPermission(permission) {
         case RESULTS.LIMITED:
             return permissionStatus;
         case RESULTS.BLOCKED:
-            handleBlockedPermission();
+            handleBlockedPermission(permission);
             return RESULTS.BLOCKED;
         case RESULTS.DENIED:
             return request(mappedPermissionName);
