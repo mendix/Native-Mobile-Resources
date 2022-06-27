@@ -6,20 +6,20 @@
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
 import { Big } from "big.js";
-import { Vibration } from 'react-native';
 
 // BEGIN EXTRA CODE
 // END EXTRA CODE
 
 /**
- * @param {Big} duration - Android only setting. The time (in milliseconds) the device should vibrate. Set to empty to use the default value 500.
+ * Reloads web and native applications.
  * @returns {Promise.<void>}
  */
-export async function Vibrate(duration) {
+export async function Reload() {
 	// BEGIN USER CODE
-    // Documentation https://facebook.github.io/react-native/docs/vibration#vibrate
-    const pattern = duration ? Number(duration) : 500;
-    Vibration.vibrate(pattern, false);
-    return Promise.resolve();
+    mx.reload();
+    return new Promise(() => {
+        // Never resolve this pormise to ensure that the next action in the nanoflow (if any)
+        // will not be executed before the actual reload is happended.
+    });
 	// END USER CODE
 }

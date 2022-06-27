@@ -6,20 +6,22 @@
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
 import { Big } from "big.js";
-import { Vibration } from 'react-native';
 
 // BEGIN EXTRA CODE
 // END EXTRA CODE
 
 /**
- * @param {Big} duration - Android only setting. The time (in milliseconds) the device should vibrate. Set to empty to use the default value 500.
+ * Clears saved session data from the local storage for offline native and PWAs.
  * @returns {Promise.<void>}
  */
-export async function Vibrate(duration) {
+export async function ClearCachedSessionData() {
 	// BEGIN USER CODE
-    // Documentation https://facebook.github.io/react-native/docs/vibration#vibrate
-    const pattern = duration ? Number(duration) : 500;
-    Vibration.vibrate(pattern, false);
-    return Promise.resolve();
+    if (mx.session && mx.session.clearCachedSessionData === undefined) {
+        return Promise.reject(
+            new Error("JS action 'Clear cached session data' is not supported prior to Mendix client v9.14")
+        );
+    }
+
+    await mx.session.clearCachedSessionData();
 	// END USER CODE
 }
