@@ -603,3 +603,8 @@ export const slider = {
         backgroundColor: background.secondary
     }
 };
+//
+// Background gradient style
+export const backgroundGradient = {
+    container: {}
+};

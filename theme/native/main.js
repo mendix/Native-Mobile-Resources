@@ -63,5 +63,3 @@ const customToggleButtons = {
         color: "green"
     }
 }
-
-export { myCustomStyling, customWebView, customQRCode, customToggleButtons };
