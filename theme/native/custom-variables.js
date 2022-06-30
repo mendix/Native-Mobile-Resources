@@ -466,7 +466,8 @@ export const floatingActionButton = {
         fontSize: font.sizeSmall
     },
     secondaryButtonCaptionContainer: {
-        backgroundColor: background.primary
+        backgroundColor: background.primary,
+        borderColor: background.primary
     }
 };
 //
@@ -606,5 +607,7 @@ export const slider = {
 //
 // Background gradient style
 export const backgroundGradient = {
-    container: {}
+    container: {},
+    angle: 0,
+    opacity: 1
 };

@@ -673,7 +673,9 @@ radioButtons = merge(radioButtons, custom.radioButtons || {});
 //
 // Background Gradient
 let backgroundGradient = {
-    container: {}
+    container: {},
+    angle: 0,
+    opacity: 1
 };
 backgroundGradient = merge(backgroundGradient, custom.backgroundGradient || {});
 export * from "../../../theme/native/custom-variables";
