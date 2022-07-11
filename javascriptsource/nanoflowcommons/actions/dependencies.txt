@@ -77,6 +77,15 @@ OR OTHER DEALINGS IN THE SOFTWARE.
 
 ---
 
+Name: js-base64
+Version: 3.7.2
+License: BSD-3-Clause
+Private: false
+Description: Yet another Base64 transcoder in pure-JS
+Repository: undefined
+
+---
+
 Name: @react-native-community/async-storage
 Version: 1.12.1
 License: MIT
