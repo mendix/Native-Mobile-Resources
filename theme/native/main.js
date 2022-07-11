@@ -49,6 +49,12 @@ const customWebView = {
     }
 }
 
+const bgColor = {
+	colorList:
+		[{ color: "#fff", offset: 0 }, { color: "#000", offset: 1 }]
+	
+}
+
 const customQRCode = {
     qrcode: {
         backgroundColor: "red"
@@ -64,4 +70,11 @@ const customToggleButtons = {
     }
 }
 
-export { myCustomStyling, customWebView, customQRCode, customToggleButtons };
+
+const custombackgroundGradient = {
+	colorList: 
+		[{ color: "rgb(0, 0, 255)", offset: 0.5 }]
+}
+
+
+export { myCustomStyling, customWebView, customQRCode, customToggleButtons, custombackgroundGradient };
