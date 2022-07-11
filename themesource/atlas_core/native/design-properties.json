@@ -2111,6 +2111,23 @@
             ]
         }
     ],
+    "com.mendix.widget.native.columnchart.ColumnChart": [
+        {
+            "name": "Chart size",
+            "type": "Dropdown",
+            "description": "Size of the chart.",
+            "options": [
+                {
+                    "name": "Square",
+                    "class": "columnChartSquare"
+                },
+                {
+                    "name": "Maximum space",
+                    "class": "columnChartMaxSpace"
+                }
+            ]
+        }
+    ],
     "com.mendix.widget.native.progressbar.ProgressBar": [
         {
             "name": "Progress bar style",
@@ -2715,20 +2732,16 @@
             "description": "Line of direction. A value of 0 is equivalent to top; increasing values rotates clockwise.",
             "options": [
                 {
-                    "name": "0 deg",
+                    "name": "0 degrees",
                     "class": "angle0"
                 },
                 {
-                    "name": "45 deg",
+                    "name": "45 degrees",
                     "class": "angle45"
                 },
                 {
-                    "name": "90 deg",
+                    "name": "90 degrees",
                     "class": "angle90"
-                },
-                {
-                    "name": "135 deg",
-                    "class": "angle135"
                 }
             ]
         },
@@ -2737,10 +2750,6 @@
             "type": "Dropdown",
             "description": "Sets the opacity of the element.",
             "options": [
-                {
-                    "name": "0%",
-                    "class": "opacity0"
-                },
                 {
                     "name": "25%",
                     "class": "opacity25"
