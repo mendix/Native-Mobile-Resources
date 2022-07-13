@@ -14,7 +14,6 @@
  */
 async function FindObjectWithGUID(list, objectGUID) {
     // BEGIN USER CODE
-    console.log("Found list: " + list);
     return list.find(element => element.getGuid() === objectGUID);
     // END USER CODE
 }
