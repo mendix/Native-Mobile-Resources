@@ -1,0 +1,1 @@
+{"BranchName":"WC-1199","ModelerVersion":"9.15.0.47426","ModelChanges":[{"Status":"Modified","UnitID":"f2f86f4e-eb59-424d-a5dd-8d5f486e66ae","UnitType":"JavaScriptActions$JavaScriptAction","UnitName":"GetStraightLineDistance","Module":"NanoflowCommons"}],"RelatedStories":[],"isWebModelerCommit":false,"HasModelerVersion":true}
