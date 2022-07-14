@@ -755,5 +755,12 @@ let columnChart = {
     }
 };
 columnChart = merge(columnChart, custom.columnChart || {});
+let gallery = {
+    container: {},
+    listStyle: {},
+    listItem: { flex: 1 },
+    pagination: { flexDirection: "row", justifyContent: "center" }
+};
+gallery = merge(gallery, custom.gallery || {});
 export * from "../../../theme/native/custom-variables";
-export { accordion, brand, backgroundDefaults, background, border, button, contrast, checkbox, fontDefaults, font, input, image, layoutGrid, listView, navigation, spacing, container, tabContainer, badge, floatingActionButton, introScreen, listViewSwipe, progressBar, progressCircle, slider, rating, radioButtons, backgroundGradient, columnChart };
+export { accordion, brand, backgroundDefaults, background, border, button, contrast, checkbox, fontDefaults, font, input, image, layoutGrid, listView, navigation, spacing, container, tabContainer, badge, floatingActionButton, introScreen, listViewSwipe, progressBar, progressCircle, slider, rating, radioButtons, backgroundGradient, columnChart, gallery };

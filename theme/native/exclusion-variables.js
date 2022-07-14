@@ -113,3 +113,6 @@ export const excludeRadioButtonsHelper = false;
 // Background Gradient
 export const excludeBackgroundGradient = false;
 export const excludeBackgroundGradientHelper = false;
+// Gallery
+export const excludeGallery = false;
+export const excludeGalleryHelper = false;

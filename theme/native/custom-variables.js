@@ -611,3 +611,10 @@ export const backgroundGradient = {
     angle: 0,
     opacity: 1
 };
+// Gallery style
+export const gallery = {
+    container: {},
+    listStyle: {},
+    listItem: { flex: 1 },
+    pagination: { flexDirection: "row", justifyContent: "center" }
+};
