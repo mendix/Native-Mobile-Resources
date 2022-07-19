@@ -43,7 +43,6 @@ export async function RequestGenericPermission(permission) {
         console.error(`${permission} permission is not found`);
         return Promise.resolve("unavailable");
     }
-    console.error(mappedPermissionName)
     const permissionStatus = await check(mappedPermissionName);
     switch (permissionStatus) {
         case RESULTS.GRANTED:
