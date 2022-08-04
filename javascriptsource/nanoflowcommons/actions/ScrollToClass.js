@@ -5,16 +5,18 @@
 // - the code between BEGIN USER CODE and END USER CODE
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
+import { Big } from "big.js";
+
 // BEGIN EXTRA CODE
 // END EXTRA CODE
+
 /**
  * @param {string} className - Enter the class name of the element you want to target.
  * @param {boolean} targetParentElement - If you want to scroll the parent element into view (because of a textfield above the validation feedback) set this to true.
  * @returns {Promise.<boolean>}
  */
-async function ScrollToClass(className, targetParentElement) {
-    var _a;
-    // BEGIN USER CODE
+export async function ScrollToClass(className, targetParentElement) {
+	// BEGIN USER CODE
     if (!className.startsWith(".")) {
         className = "." + className;
     }
@@ -31,7 +33,5 @@ async function ScrollToClass(className, targetParentElement) {
     else {
         return false;
     }
-    // END USER CODE
+	// END USER CODE
 }
-
-export { ScrollToClass };
