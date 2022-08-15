@@ -7,6 +7,7 @@
 // Other code you write will be lost the next time you deploy the project.
 import { Big } from "big.js";
 import fetchBlob from 'rn-fetch-blob';
+import { Platform } from 'react-native';
 
 // BEGIN EXTRA CODE
 function formatMendixFileUrl(file) {
@@ -15,6 +16,9 @@ function formatMendixFileUrl(file) {
 }
 function formatPath(...pathArgs) {
     return pathArgs.filter(arg => !!arg).join("/");
+}
+function sanitizeFileName(name) {
+    return name.replace(/[<>"?:|*\/\\\u0000-\u001F\u007F]/g, "_");
 }
 // END EXTRA CODE
 
@@ -30,9 +34,12 @@ export async function DownloadFile(file, filePath) {
     }
     const dirs = fetchBlob.fs.dirs;
     try {
+        const fileName = file.get("Name");
+        const sanitizedFileName = sanitizeFileName(fileName);
+        const baseDir = Platform.OS === 'ios' ? dirs.DocumentDir : dirs.DownloadDir;
         await fetchBlob
             .config({
-            path: formatPath(dirs.DownloadDir, filePath, file.get("Name"))
+            path: formatPath(baseDir, filePath, sanitizedFileName)
         })
             .fetch("GET", formatMendixFileUrl(file));
         return Promise.resolve(true);

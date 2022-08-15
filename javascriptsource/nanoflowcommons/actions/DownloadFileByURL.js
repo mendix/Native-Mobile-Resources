@@ -7,10 +7,14 @@
 // Other code you write will be lost the next time you deploy the project.
 import { Big } from "big.js";
 import fetchBlob from 'rn-fetch-blob';
+import { Platform } from 'react-native';
 
 // BEGIN EXTRA CODE
 function formatPath(...pathArgs) {
     return pathArgs.filter(arg => !!arg).join("/");
+}
+function sanitizeFileName(name) {
+    return name.replace(/[<>"?:|*\/\\\u0000-\u001F\u007F]/g, "_");
 }
 // END EXTRA CODE
 
@@ -27,10 +31,12 @@ export async function DownloadFileByURL(fileURL, filePath, fileName) {
     }
     const dirs = fetchBlob.fs.dirs;
     try {
-        const fileNameOverride = (fileName || fileURL.substring(fileURL.lastIndexOf("/") + 1)).replace(/[<>"?:|*\/\\]/g,"")
+        const fileNameOverride = fileName || decodeURIComponent(fileURL.substring(fileURL.lastIndexOf("/") + 1));
+        const sanitizedFileName = sanitizeFileName(fileNameOverride);
+        const baseDir = Platform.OS === 'ios' ? dirs.DocumentDir : dirs.DownloadDir;
         await fetchBlob
             .config({
-            path: formatPath(dirs.DownloadDir, filePath, fileNameOverride)
+            path: formatPath(baseDir, filePath, sanitizedFileName)
         })
             .fetch("GET", fileURL);
         return Promise.resolve(true);
