@@ -43,16 +43,6 @@ SOFTWARE.
 
 ---
 
-Name: react-native-image-picker
-Version: 4.0.3
-License: MIT
-Private: false
-Description: A React Native module that allows you to use native UI to select media from the device library or directly from the camera
-Repository: https://github.com/react-native-image-picker/react-native-image-picker.git
-Homepage: https://github.com/react-native-image-picker/react-native-image-picker
-
----
-
 Name: react-native-localize
 Version: 1.3.4
 License: MIT
@@ -88,11 +78,45 @@ SOFTWARE.
 
 ---
 
-Name: react-native-permissions
-Version: 3.0.4
+Name: react-native-image-picker
+Version: 4.0.3
 License: MIT
 Private: false
-Description: An unified permissions API for React Native on iOS and Android
+Description: A React Native module that allows you to use native UI to select media from the device library or directly from the camera
+Repository: https://github.com/react-native-image-picker/react-native-image-picker.git
+Homepage: https://github.com/react-native-image-picker/react-native-image-picker
+License Copyright:
+===
+
+MIT License
+
+Copyright (c) 2015-present, Facebook, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+Name: react-native-permissions
+Version: 3.3.1
+License: MIT
+Private: false
+Description: An unified permissions API for React Native on iOS, Android and Windows
 Repository: https://github.com/zoontek/react-native-permissions.git
 Homepage: https://github.com/zoontek/react-native-permissions#readme
 License Copyright:
@@ -339,7 +363,7 @@ Version: 2.2.4
 License: MIT
 Private: false
 Description: invariant
-Repository: undefined
+Repository: https://github.com/zertosh/invariant
 License Copyright:
 ===
 
@@ -408,7 +432,7 @@ Version: 4.0.0
 License: MIT
 Private: false
 Description: A regex that tokenizes JavaScript.
-Repository: undefined
+Repository: lydell/js-tokens
 License Copyright:
 ===
 
@@ -567,7 +591,20 @@ Version: 0.6.2
 License: MIT
 Private: false
 Description: A simple, expressive way to validate data in JavaScript.
-Repository: undefined
+Repository: git://github.com/ianstormtaylor/superstruct.git
+License Copyright:
+===
+
+The MIT License
+
+Copyright &copy; 2017, [Ian Storm Taylor](https://ianstormtaylor.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 
 ---
 
@@ -576,7 +613,7 @@ Version: 2.0.2
 License: MIT
 Private: false
 Description: Recursively (deep) clone JavaScript native types, like Object, Array, RegExp, Date as well as primitives.
-Repository: undefined
+Repository: jonschlinkert/clone-deep
 Homepage: https://github.com/jonschlinkert/clone-deep
 License Copyright:
 ===
@@ -611,7 +648,7 @@ Version: 6.0.3
 License: MIT
 Private: false
 Description: Get the native type of a value.
-Repository: undefined
+Repository: jonschlinkert/kind-of
 Homepage: https://github.com/jonschlinkert/kind-of
 License Copyright:
 ===
@@ -646,7 +683,7 @@ Version: 1.0.0
 License: MIT
 Private: false
 Description: Iterate over the own enumerable properties of an object, and return an object with properties that evaluate to true from the callback. Exit early by returning `false`. JavaScript/Node.js.
-Repository: undefined
+Repository: jonschlinkert/for-own
 Homepage: https://github.com/jonschlinkert/for-own
 License Copyright:
 ===
@@ -681,7 +718,7 @@ Version: 2.0.4
 License: MIT
 Private: false
 Description: Returns true if an object was created by the `Object` constructor.
-Repository: undefined
+Repository: jonschlinkert/is-plain-object
 Homepage: https://github.com/jonschlinkert/is-plain-object
 License Copyright:
 ===
@@ -716,7 +753,7 @@ Version: 1.0.0
 License: MIT
 Private: false
 Description: Make a shallow clone of an object, array or primitive.
-Repository: undefined
+Repository: jonschlinkert/shallow-clone
 Homepage: https://github.com/jonschlinkert/shallow-clone
 License Copyright:
 ===
@@ -750,7 +787,7 @@ Version: 1.0.2
 License: MIT
 Private: false
 Description: Iterate over the own and inherited enumerable properties of an object, and return an object with properties that evaluate to true from the callback. Exit early by returning `false`. JavaScript/Node.js
-Repository: undefined
+Repository: jonschlinkert/for-in
 Homepage: https://github.com/jonschlinkert/for-in
 License Copyright:
 ===
@@ -785,7 +822,7 @@ Version: 3.0.1
 License: MIT
 Private: false
 Description: Returns true if the value is an object and not an array or null.
-Repository: undefined
+Repository: jonschlinkert/isobject
 Homepage: https://github.com/jonschlinkert/isobject
 License Copyright:
 ===
@@ -819,7 +856,7 @@ Version: 0.1.1
 License: MIT
 Private: false
 Description: Returns true if a value is any of the object types: array, regexp, plain object, function or date. This is useful for determining if a value can be extended, e.g. "can the value have keys?"
-Repository: undefined
+Repository: jonschlinkert/is-extendable
 Homepage: https://github.com/jonschlinkert/is-extendable
 License Copyright:
 ===
@@ -854,7 +891,7 @@ Version: 2.0.1
 License: MIT
 Private: false
 Description: Mixin the own and inherited properties of other objects onto the first object. Pass an empty object as the first arg to shallow clone.
-Repository: undefined
+Repository: jonschlinkert/mixin-object
 Homepage: https://github.com/jonschlinkert/mixin-object
 License Copyright:
 ===
@@ -923,7 +960,7 @@ Version: 0.11.0
 License: MIT
 Private: false
 Description: React Native module for playing sound clips on iOS, Android, and Windows
-Repository: undefined
+Repository: zmxv/react-native-sound
 License Copyright:
 ===
 
