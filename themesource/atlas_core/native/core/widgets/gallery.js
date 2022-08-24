@@ -16,16 +16,35 @@ export const com_mendix_widget_native_gallery_Gallery = {
         // All ViewStyle properties are allowed
         ...gallery.container
     },
-    listStyle: {
+    dynamicItemClasses: {
+    // All custom style properties are allowed
+    },
+    emptyPlaceholder: {
         // All ViewStyle properties are allowed
-        ...gallery.listStyle
+        ...gallery.emptyPlaceholder
+    },
+    firstItem: {
+        // All ViewStyle properties are allowed
+        ...gallery.firstItem
+    },
+    lastItem: {
+        // All ViewStyle properties are allowed
+        ...gallery.lastItem
+    },
+    list: {
+        // All ViewStyle properties are allowed
+        ...gallery.list
     },
     listItem: {
         // All ViewStyle properties are allowed
         ...gallery.listItem
     },
-    pagination: {
+    loadMoreButtonContainer: {
         // All ViewStyle properties are allowed
-        ...gallery.pagination
+        ...gallery.loadMoreButtonContainer
+    },
+    loadMoreButtonCaption: {
+        // All TextStyle properties are allowed
+        ...gallery.loadMoreButtonCaption
     }
 };

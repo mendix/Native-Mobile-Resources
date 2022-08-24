@@ -8,17 +8,17 @@ To customize any core styling, copy the part you want to customize to styles/nat
 ==========================================================================
 */
 export const justifyPaginationLeft = {
-    pagination: {
+    loadMoreButtonContainer: {
         justifyContent: "flex-start"
     }
 };
 export const justifyPaginationCenter = {
-    pagination: {
+    loadMoreButtonContainer: {
         justifyContent: "center"
     }
 };
 export const justifyPaginationRight = {
-    pagination: {
+    loadMoreButtonContainer: {
         justifyContent: "flex-end"
     }
 };
