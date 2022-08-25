@@ -3044,9 +3044,9 @@
             ]
         },
         {
-            "name": "Justify pagination",
+            "name": "Justify load more button",
             "type": "Dropdown",
-            "description": "Justify pagination in the active direction.",
+            "description": "Justify the load more button in the active direction.",
             "options": [
                 {
                     "name": "Left",
@@ -3059,6 +3059,40 @@
                 {
                     "name": "Right",
                     "class": "justifyPaginationRight"
+                }
+            ]
+        },
+        {
+            "name": "Load more button style",
+            "type": "Dropdown",
+            "description": "Style of the Load more button.",
+            "options": [
+                {
+                    "name": "Secondary",
+                    "class": "loadMoreButtonBackgroundSecondary"
+                },
+                {
+                    "name": "Success",
+                    "class": "loadMoreButtonBackgroundSuccess"
+                },
+                {
+                    "name": "Warning",
+                    "class": "loadMoreButtonBackgroundWarning"
+                },
+                {
+                    "name": "Danger",
+                    "class": "loadMoreButtonBackgroundDanger"
+                }
+            ]
+        },
+        {
+            "name": "Load more button size",
+            "type": "Dropdown",
+            "description": "Style of the Load more button.",
+            "options": [
+                {
+                    "name": "Maximum space",
+                    "class": "loadMoreButtonSpaceMax"
                 }
             ]
         },

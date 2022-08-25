@@ -624,5 +624,5 @@ export const gallery = {
         backgroundColor: background.brandPrimary,
         borderRadius: 4
     },
-    loadMoreButtonCaption: { color: "#FFFFFF" }
+    loadMoreButtonCaption: { color: "#FFFFFF", textAlign: "center" }
 };

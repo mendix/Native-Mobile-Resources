@@ -1,4 +1,4 @@
-import { border, spacing } from "../../variables";
+import { button, border, spacing } from "../../variables";
 /*
 
 DISCLAIMER:
@@ -9,17 +9,17 @@ To customize any core styling, copy the part you want to customize to styles/nat
 */
 export const justifyPaginationLeft = {
     loadMoreButtonContainer: {
-        justifyContent: "flex-start"
+        alignSelf: "flex-start"
     }
 };
 export const justifyPaginationCenter = {
     loadMoreButtonContainer: {
-        justifyContent: "center"
+        alignSelf: "center"
     }
 };
 export const justifyPaginationRight = {
     loadMoreButtonContainer: {
-        justifyContent: "flex-end"
+        alignSelf: "flex-end"
     }
 };
 export const listItemBorderHorizontal = {
@@ -111,7 +111,7 @@ export const galleryGridFlexWrap = {
 };
 export const galleryGridJustifyContentStart = {
     listItem: {
-        justifyContent: "wrap"
+        justifyContent: "flex-start"
     }
 };
 export const galleryGridJustifyContentCenter = {
@@ -137,5 +137,30 @@ export const galleryGridJustifyContentSpaceAround = {
 export const galleryGridJustifyContentSpaceEvenly = {
     listItem: {
         justifyContent: "space-evenly"
+    }
+};
+export const loadMoreButtonBackgroundSecondary = {
+    loadMoreButtonContainer: {
+        backgroundColor: button.secondary.backgroundColor
+    }
+};
+export const loadMoreButtonBackgroundSuccess = {
+    loadMoreButtonContainer: {
+        backgroundColor: button.success.backgroundColor
+    }
+};
+export const loadMoreButtonBackgroundWarning = {
+    loadMoreButtonContainer: {
+        backgroundColor: button.warning.backgroundColor
+    }
+};
+export const loadMoreButtonBackgroundDanger = {
+    loadMoreButtonContainer: {
+        backgroundColor: button.danger.backgroundColor
+    }
+};
+export const loadMoreButtonSpaceMax = {
+    loadMoreButtonContainer: {
+        width: "100%"
     }
 };
