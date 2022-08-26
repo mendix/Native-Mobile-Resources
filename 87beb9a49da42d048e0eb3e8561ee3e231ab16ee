@@ -1,0 +1,1 @@
+{"BranchName":"","ModelerVersion":"9.10.0.36429","ModelChanges":[{"Status":"Modified","UnitID":"67d88c16-656f-433b-a2d6-c3c3a2dd31e8","UnitType":"JavaScriptActions$JavaScriptAction","UnitName":"IsConnectedToServer","Module":"NanoflowCommons"}],"RelatedStories":[],"isWebModelerCommit":false,"HasModelerVersion":true}
