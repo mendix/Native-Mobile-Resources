@@ -10,7 +10,7 @@
 /**
  * @returns {Promise.<boolean>}
  */
-async function HasServerConnection() {
+async function IsConnectedToServer() {
     // BEGIN USER CODE
     try {
         const response = await fetch(mx.remoteUrl);
@@ -23,4 +23,4 @@ async function HasServerConnection() {
     // END USER CODE
 }
 
-export { HasServerConnection };
+export { IsConnectedToServer };
