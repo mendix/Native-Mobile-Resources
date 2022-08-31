@@ -1,5 +1,6 @@
 {
   "nativeDependencies": {
-    "rn-fetch-blob": "0.12.0"
+    "react-native-file-viewer": "2.1.5",
+    "react-native-blob-util": "0.16.2"
   }
 }

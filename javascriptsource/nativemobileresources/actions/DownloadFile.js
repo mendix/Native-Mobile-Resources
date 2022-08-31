@@ -6,8 +6,9 @@
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
 import { Big } from "big.js";
-import fetchBlob from 'rn-fetch-blob';
 import { Platform } from 'react-native';
+import RNBlobUtil from 'react-native-blob-util';
+import FileViewer from 'react-native-file-viewer';
 
 // BEGIN EXTRA CODE
 function formatMendixFileUrl(file) {
@@ -18,35 +19,40 @@ function formatPath(...pathArgs) {
     return pathArgs.filter(arg => !!arg).join("/");
 }
 function sanitizeFileName(name) {
-    return name.replace(/[<>"?:|*\/\\\u0000-\u001F\u007F]/g, "_");
+    return name.replace(/[<>"?:|*/\\\u0000-\u001F\u007F]/g, "_");
 }
 // END EXTRA CODE
 
 /**
- * @param {MxObject} file - This field is required
- * @param {string} filePath - This field is optional
- * @returns {Promise.<boolean>}
+ * @param {MxObject} file
+ * @param {boolean} openWithOS - Set to True to let the OS open the file and ask the user with which applciation.\nSet to False if the file only needs to be saved to the device storage.
+ * @returns {Promise.<void>}
  */
-export async function DownloadFile(file, filePath) {
+export async function DownloadFile(file, openWithOS) {
 	// BEGIN USER CODE
     if (!file) {
         return Promise.reject(new Error("Input parameter 'file' is required"));
     }
-    const dirs = fetchBlob.fs.dirs;
-    try {
-        const fileName = file.get("Name");
-        const sanitizedFileName = sanitizeFileName(fileName);
-        const baseDir = Platform.OS === 'ios' ? dirs.DocumentDir : dirs.DownloadDir;
-        await fetchBlob
-            .config({
-            path: formatPath(baseDir, filePath, sanitizedFileName)
-        })
-            .fetch("GET", formatMendixFileUrl(file));
-        return Promise.resolve(true);
+    const dirs = RNBlobUtil.fs.dirs;
+    const fileName = file.get("Name");
+    const sanitizedFileName = sanitizeFileName(fileName);
+    const baseDir = Platform.OS === "ios" ? dirs.DocumentDir : dirs.CacheDir;
+    const fileURL = formatMendixFileUrl(file);
+    const downloadedFile = await RNBlobUtil.config({
+        path: formatPath(baseDir, sanitizedFileName)
+    }).fetch("GET", fileURL);
+    if (Platform.OS === "android") {
+        await RNBlobUtil.MediaCollection.copyToMediaStore({
+            name: sanitizedFileName,
+            mimeType: "*",
+            parentFolder: ""
+        }, "Download", downloadedFile.path());
     }
-    catch (err) {
-        console.error("error", err);
-        return Promise.resolve(false);
+    if (openWithOS) {
+        await FileViewer.open(downloadedFile.path(), {
+            showOpenWithDialog: true,
+            showAppsSuggestions: true
+        });
     }
 	// END USER CODE
 }
