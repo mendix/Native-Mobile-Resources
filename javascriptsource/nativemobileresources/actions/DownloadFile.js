@@ -19,13 +19,15 @@ function formatPath(...pathArgs) {
     return pathArgs.filter(arg => !!arg).join("/");
 }
 function sanitizeFileName(name) {
+    /* eslint-disable-next-line no-control-regex */
     return name.replace(/[<>"?:|*/\\\u0000-\u001F\u007F]/g, "_");
 }
 // END EXTRA CODE
 
 /**
  * @param {MxObject} file
- * @param {boolean} openWithOS - Set to True to let the OS open the file and ask the user with which applciation.\nSet to False if the file only needs to be saved to the device storage.
+ * @param {boolean} openWithOS - Set to True to let the OS open the file and ask the user with which applciation.
+Set to False if the file only needs to be saved to the device storage.
  * @returns {Promise.<void>}
  */
 export async function DownloadFile(file, openWithOS) {
