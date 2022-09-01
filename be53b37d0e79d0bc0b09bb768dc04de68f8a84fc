@@ -1,0 +1,1 @@
+{"BranchName":"feat/NC-file-download-jsActions","ModelerVersion":"9.10.0.36429","ModelChanges":[{"Status":"Modified","UnitID":"c234706d-0ebc-4186-9967-60e895700a11","UnitType":"JavaScriptActions$JavaScriptAction","UnitName":"DownloadFile","Module":"NativeMobileResources"}],"RelatedStories":[],"isWebModelerCommit":false,"HasModelerVersion":true}
