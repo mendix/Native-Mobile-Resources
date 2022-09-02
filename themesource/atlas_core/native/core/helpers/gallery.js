@@ -8,17 +8,17 @@ To customize any core styling, copy the part you want to customize to styles/nat
 ==========================================================================
 */
 export const justifyPaginationLeft = {
-    loadMoreButtonContainer: {
+    loadMoreButtonPressableContainer: {
         alignSelf: "flex-start"
     }
 };
 export const justifyPaginationCenter = {
-    loadMoreButtonContainer: {
+    loadMoreButtonPressableContainer: {
         alignSelf: "center"
     }
 };
 export const justifyPaginationRight = {
-    loadMoreButtonContainer: {
+    loadMoreButtonPressableContainer: {
         alignSelf: "flex-end"
     }
 };
@@ -140,27 +140,27 @@ export const galleryGridJustifyContentSpaceEvenly = {
     }
 };
 export const loadMoreButtonBackgroundSecondary = {
-    loadMoreButtonContainer: {
+    loadMoreButtonPressableContainer: {
         backgroundColor: button.secondary.backgroundColor
     }
 };
 export const loadMoreButtonBackgroundSuccess = {
-    loadMoreButtonContainer: {
+    loadMoreButtonPressableContainer: {
         backgroundColor: button.success.backgroundColor
     }
 };
 export const loadMoreButtonBackgroundWarning = {
-    loadMoreButtonContainer: {
+    loadMoreButtonPressableContainer: {
         backgroundColor: button.warning.backgroundColor
     }
 };
 export const loadMoreButtonBackgroundDanger = {
-    loadMoreButtonContainer: {
+    loadMoreButtonPressableContainer: {
         backgroundColor: button.danger.backgroundColor
     }
 };
-export const loadMoreButtonSpaceMax = {
-    loadMoreButtonContainer: {
-        width: "100%"
+export const loadMoreButtonFixedSize = {
+    loadMoreButtonPressableContainer: {
+        alignSelf: "baseline"
     }
 };

@@ -3091,8 +3091,8 @@
             "description": "Style of the Load more button.",
             "options": [
                 {
-                    "name": "Maximum space",
-                    "class": "loadMoreButtonSpaceMax"
+                    "name": "Fixed size",
+                    "class": "loadMoreButtonFixedSize"
                 }
             ]
         },
