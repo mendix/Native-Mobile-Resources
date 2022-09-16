@@ -148,7 +148,7 @@ SOFTWARE.
 ---
 
 Name: url-parse
-Version: 1.4.7
+Version: 1.5.10
 License: MIT
 Private: false
 Description: Small footprint URL parser that works seamlessly across Node.js and browser environments
@@ -290,7 +290,7 @@ SOFTWARE.
 ---
 
 Name: react-native-push-notification
-Version: 6.1.2
+Version: 6.1.3
 License: MIT
 Private: false
 Description: React Native Local and Remote Notifications
@@ -325,7 +325,7 @@ SOFTWARE.
 ---
 
 Name: @react-native-community/push-notification-ios
-Version: 1.8.0
+Version: 1.10.1
 License: MIT
 Private: false
 Description: React Native Push Notification API for iOS
