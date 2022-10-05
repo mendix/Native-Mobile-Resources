@@ -3,7 +3,7 @@ Version: 4.4.1
 License: ISC
 Private: false
 Description: React Native authentication with the native Touch ID popup.
-Repository: git+https://github.com/naoufal/react-native-touch-id.git
+Repository: https://github.com/naoufal/react-native-touch-id.git
 Homepage: https://github.com/naoufal/react-native-touch-id
 
 ---
@@ -13,7 +13,7 @@ Version: 4.0.1
 License: MIT
 Private: false
 Description: React Native Camera Roll for iOS & Android
-Repository: git+https://github.com/react-native-community/react-native-cameraroll.git
+Repository: https://github.com/react-native-community/react-native-cameraroll.git
 Homepage: https://github.com/react-native-community/react-native-cameraroll#readme
 License Copyright:
 ===
@@ -43,12 +43,46 @@ SOFTWARE.
 
 ---
 
+Name: react-native-image-picker
+Version: 4.0.3
+License: MIT
+Private: false
+Description: A React Native module that allows you to use native UI to select media from the device library or directly from the camera
+Repository: https://github.com/react-native-image-picker/react-native-image-picker.git
+Homepage: https://github.com/react-native-image-picker/react-native-image-picker
+License Copyright:
+===
+
+MIT License
+
+Copyright (c) 2015-present, Facebook, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
 Name: react-native-localize
 Version: 1.3.4
 License: MIT
 Private: false
 Description: A toolbox for your React Native app localization.
-Repository: git+https://github.com/react-native-community/react-native-localize.git
+Repository: https://github.com/react-native-community/react-native-localize.git
 Homepage: https://github.com/react-native-community/react-native-localize
 License Copyright:
 ===
@@ -78,46 +112,12 @@ SOFTWARE.
 
 ---
 
-Name: react-native-image-picker
-Version: 4.0.3
-License: MIT
-Private: false
-Description: A React Native module that allows you to use native UI to select media from the device library or directly from the camera
-Repository: git+https://github.com/react-native-image-picker/react-native-image-picker.git
-Homepage: https://github.com/react-native-image-picker/react-native-image-picker
-License Copyright:
-===
-
-MIT License
-
-Copyright (c) 2015-present, Facebook, Inc.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
----
-
 Name: react-native-permissions
 Version: 3.3.1
 License: MIT
 Private: false
 Description: An unified permissions API for React Native on iOS, Android and Windows
-Repository: git+https://github.com/zoontek/react-native-permissions.git
+Repository: https://github.com/zoontek/react-native-permissions.git
 Homepage: https://github.com/zoontek/react-native-permissions#readme
 License Copyright:
 ===
@@ -152,8 +152,7 @@ Version: 1.5.10
 License: MIT
 Private: false
 Description: Small footprint URL parser that works seamlessly across Node.js and browser environments
-Repository: git+https://github.com/unshiftio/url-parse.git
-Homepage: https://github.com/unshiftio/url-parse#readme
+Repository: https://github.com/unshiftio/url-parse.git
 License Copyright:
 ===
 
@@ -188,7 +187,7 @@ Version: 2.2.0
 License: MIT
 Private: false
 Description: Querystringify - Small, simple but powerful query string parser.
-Repository: git+https://github.com/unshiftio/querystringify.git
+Repository: https://github.com/unshiftio/querystringify
 Homepage: https://github.com/unshiftio/querystringify
 License Copyright:
 ===
@@ -224,7 +223,7 @@ Version: 1.0.0
 License: MIT
 Private: false
 Description: Check if a protocol requires a certain port number to be added to an URL.
-Repository: git+https://github.com/unshiftio/requires-port.git
+Repository: https://github.com/unshiftio/requires-port
 Homepage: https://github.com/unshiftio/requires-port
 License Copyright:
 ===
@@ -260,8 +259,7 @@ Version: 0.16.2
 License: MIT
 Private: false
 Description: A module provides upload, download, and files access API. Supports file stream read/write for process large files.
-Repository: git+https://github.com/RonRadtke/react-native-blob-util.git
-Homepage: https://github.com/RonRadtke/react-native-blob-util#readme
+Repository: https://github.com/RonRadtke/react-native-blob-util
 License Copyright:
 ===
 
@@ -296,7 +294,6 @@ License: MIT
 Private: false
 Description: Native file viewer for react-native
 Repository: git://github.com/vinzscam/react-native-file-viewer.git
-Homepage: https://github.com/vinzscam/react-native-file-viewer#readme
 License Copyright:
 ===
 
@@ -330,8 +327,7 @@ Version: 3.0.0
 License: MIT
 Private: false
 Description: A comprehensive library for mime-type mapping
-Repository: git+https://github.com/broofa/mime.git
-Homepage: https://github.com/broofa/mime#readme
+Repository: https://github.com/broofa/mime
 License Copyright:
 ===
 
@@ -365,7 +361,7 @@ Version: 0.1.0
 License: null
 Private: false
 Description: A robust base64 encoder/decoder that is fully compatible with `atob()` and `btoa()`, written in JavaScript.
-Repository: git+https://github.com/mathiasbynens/base64.git
+Repository: https://github.com/mathiasbynens/base64.git
 Homepage: http://mths.be/base64
 
 ---
@@ -376,7 +372,6 @@ License: ISC
 Private: false
 Description: a little globber
 Repository: git://github.com/isaacs/node-glob.git
-Homepage: https://github.com/isaacs/node-glob#readme
 License Copyright:
 ===
 
@@ -411,7 +406,6 @@ License: ISC
 Private: false
 Description: Use node's fs.realpath, but fall back to the JS implementation if the native one fails
 Repository: git+https://github.com/isaacs/fs.realpath.git
-Homepage: https://github.com/isaacs/fs.realpath#readme
 License Copyright:
 ===
 
@@ -467,7 +461,7 @@ Version: 1.0.6
 License: ISC
 Private: false
 Description: Add callbacks to requests in flight to avoid async duplication
-Repository: git+https://github.com/npm/inflight.git
+Repository: https://github.com/npm/inflight.git
 Homepage: https://github.com/isaacs/inflight
 License Copyright:
 ===
@@ -496,8 +490,7 @@ Version: 2.0.4
 License: ISC
 Private: false
 Description: Browser-friendly inheritance fully compatible with standard node.js inherits()
-Repository: git://github.com/isaacs/inherits.git
-Homepage: https://github.com/isaacs/inherits#readme
+Repository: git://github.com/isaacs/inherits
 License Copyright:
 ===
 
@@ -527,7 +520,6 @@ License: ISC
 Private: false
 Description: a glob matcher in javascript
 Repository: git://github.com/isaacs/minimatch.git
-Homepage: https://github.com/isaacs/minimatch#readme
 License Copyright:
 ===
 
@@ -555,8 +547,7 @@ Version: 1.4.0
 License: ISC
 Private: false
 Description: Run a function exactly one time
-Repository: git://github.com/isaacs/once.git
-Homepage: https://github.com/isaacs/once#readme
+Repository: git://github.com/isaacs/once
 License Copyright:
 ===
 
@@ -584,8 +575,7 @@ Version: 1.0.1
 License: MIT
 Private: false
 Description: Node.js 0.12 path.isAbsolute() ponyfill
-Repository: git+https://github.com/sindresorhus/path-is-absolute.git
-Homepage: https://github.com/sindresorhus/path-is-absolute#readme
+Repository: sindresorhus/path-is-absolute
 License Copyright:
 ===
 
@@ -619,7 +609,7 @@ Version: 1.0.2
 License: ISC
 Private: false
 Description: Callback wrapping utility
-Repository: git+https://github.com/npm/wrappy.git
+Repository: https://github.com/npm/wrappy
 Homepage: https://github.com/npm/wrappy
 License Copyright:
 ===
@@ -719,7 +709,6 @@ License: MIT
 Private: false
 Description: concatenative mapdashery
 Repository: git://github.com/substack/node-concat-map.git
-Homepage: https://github.com/substack/node-concat-map#readme
 License Copyright:
 ===
 
@@ -750,7 +739,7 @@ Version: 5.9.7
 License: MIT
 Private: false
 Description: React Native Network Info API for iOS & Android
-Repository: git+https://github.com/react-native-community/react-native-netinfo.git
+Repository: https://github.com/react-native-community/react-native-netinfo.git
 Homepage: https://github.com/react-native-community/react-native-netinfo#readme
 License Copyright:
 ===
@@ -785,8 +774,7 @@ Version: 6.1.3
 License: MIT
 Private: false
 Description: React Native Local and Remote Notifications
-Repository: git+ssh://git@github.com/zo0r/react-native-push-notification.git
-Homepage: https://github.com/zo0r/react-native-push-notification#readme
+Repository: git+ssh://git@github.com:zo0r/react-native-push-notification.git
 License Copyright:
 ===
 
@@ -821,7 +809,7 @@ Version: 1.10.1
 License: MIT
 Private: false
 Description: React Native Push Notification API for iOS
-Repository: git+https://github.com/react-native-community/push-notification-ios.git
+Repository: https://github.com/react-native-community/push-notification-ios.git
 Homepage: https://github.com/react-native-community/push-notification-ios#readme
 License Copyright:
 ===
@@ -855,8 +843,7 @@ Version: 2.2.4
 License: MIT
 Private: false
 Description: invariant
-Repository: git+https://github.com/zertosh/invariant.git
-Homepage: https://github.com/zertosh/invariant#readme
+Repository: https://github.com/zertosh/invariant
 License Copyright:
 ===
 
@@ -925,8 +912,7 @@ Version: 4.0.0
 License: MIT
 Private: false
 Description: A regex that tokenizes JavaScript.
-Repository: git+https://github.com/lydell/js-tokens.git
-Homepage: https://github.com/lydell/js-tokens#readme
+Repository: lydell/js-tokens
 License Copyright:
 ===
 
@@ -1086,7 +1072,6 @@ License: MIT
 Private: false
 Description: A simple, expressive way to validate data in JavaScript.
 Repository: git://github.com/ianstormtaylor/superstruct.git
-Homepage: https://github.com/ianstormtaylor/superstruct#readme
 License Copyright:
 ===
 
@@ -1108,7 +1093,7 @@ Version: 2.0.2
 License: MIT
 Private: false
 Description: Recursively (deep) clone JavaScript native types, like Object, Array, RegExp, Date as well as primitives.
-Repository: git+https://github.com/jonschlinkert/clone-deep.git
+Repository: jonschlinkert/clone-deep
 Homepage: https://github.com/jonschlinkert/clone-deep
 License Copyright:
 ===
@@ -1143,7 +1128,7 @@ Version: 6.0.3
 License: MIT
 Private: false
 Description: Get the native type of a value.
-Repository: git+https://github.com/jonschlinkert/kind-of.git
+Repository: jonschlinkert/kind-of
 Homepage: https://github.com/jonschlinkert/kind-of
 License Copyright:
 ===
@@ -1178,7 +1163,7 @@ Version: 1.0.0
 License: MIT
 Private: false
 Description: Iterate over the own enumerable properties of an object, and return an object with properties that evaluate to true from the callback. Exit early by returning `false`. JavaScript/Node.js.
-Repository: git+https://github.com/jonschlinkert/for-own.git
+Repository: jonschlinkert/for-own
 Homepage: https://github.com/jonschlinkert/for-own
 License Copyright:
 ===
@@ -1213,7 +1198,7 @@ Version: 2.0.4
 License: MIT
 Private: false
 Description: Returns true if an object was created by the `Object` constructor.
-Repository: git+https://github.com/jonschlinkert/is-plain-object.git
+Repository: jonschlinkert/is-plain-object
 Homepage: https://github.com/jonschlinkert/is-plain-object
 License Copyright:
 ===
@@ -1248,7 +1233,7 @@ Version: 1.0.0
 License: MIT
 Private: false
 Description: Make a shallow clone of an object, array or primitive.
-Repository: git+https://github.com/jonschlinkert/shallow-clone.git
+Repository: jonschlinkert/shallow-clone
 Homepage: https://github.com/jonschlinkert/shallow-clone
 License Copyright:
 ===
@@ -1282,7 +1267,7 @@ Version: 1.0.2
 License: MIT
 Private: false
 Description: Iterate over the own and inherited enumerable properties of an object, and return an object with properties that evaluate to true from the callback. Exit early by returning `false`. JavaScript/Node.js
-Repository: git+https://github.com/jonschlinkert/for-in.git
+Repository: jonschlinkert/for-in
 Homepage: https://github.com/jonschlinkert/for-in
 License Copyright:
 ===
@@ -1317,7 +1302,7 @@ Version: 3.0.1
 License: MIT
 Private: false
 Description: Returns true if the value is an object and not an array or null.
-Repository: git+https://github.com/jonschlinkert/isobject.git
+Repository: jonschlinkert/isobject
 Homepage: https://github.com/jonschlinkert/isobject
 License Copyright:
 ===
@@ -1351,7 +1336,7 @@ Version: 0.1.1
 License: MIT
 Private: false
 Description: Returns true if a value is any of the object types: array, regexp, plain object, function or date. This is useful for determining if a value can be extended, e.g. "can the value have keys?"
-Repository: git+https://github.com/jonschlinkert/is-extendable.git
+Repository: jonschlinkert/is-extendable
 Homepage: https://github.com/jonschlinkert/is-extendable
 License Copyright:
 ===
@@ -1386,7 +1371,7 @@ Version: 2.0.1
 License: MIT
 Private: false
 Description: Mixin the own and inherited properties of other objects onto the first object. Pass an empty object as the first arg to shallow clone.
-Repository: git+https://github.com/jonschlinkert/mixin-object.git
+Repository: jonschlinkert/mixin-object
 Homepage: https://github.com/jonschlinkert/mixin-object
 License Copyright:
 ===
@@ -1421,7 +1406,7 @@ Version: 3.4.0
 License: MIT
 Private: false
 Description: InAppBrowser for React Native
-Repository: git+ssh://git@github.com/proyecto26/react-native-inappbrowser.git
+Repository: git@github.com:proyecto26/react-native-inappbrowser.git
 Homepage: https://github.com/proyecto26/react-native-inappbrowser
 License Copyright:
 ===
@@ -1455,8 +1440,7 @@ Version: 0.11.0
 License: MIT
 Private: false
 Description: React Native module for playing sound clips on iOS, Android, and Windows
-Repository: git+https://github.com/zmxv/react-native-sound.git
-Homepage: https://github.com/zmxv/react-native-sound#readme
+Repository: zmxv/react-native-sound
 License Copyright:
 ===
 
