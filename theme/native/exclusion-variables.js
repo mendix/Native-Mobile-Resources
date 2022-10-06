@@ -116,3 +116,6 @@ export const excludeBackgroundGradientHelper = false;
 // Gallery
 export const excludeGallery = false;
 export const excludeGalleryHelper = false;
+// Gallery Text Filter
+export const excludeGalleryTextFilter = false;
+export const excludeGalleryTextFilterHelper = false;

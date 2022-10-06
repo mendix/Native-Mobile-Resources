@@ -622,11 +622,43 @@ export const gallery = {
     },
     loadMoreButtonPressableContainer: {
         alignItems: "center",
-        backgroundColor: "#264AE5",
+        backgroundColor: brand.primary,
         borderRadius: 4
     },
     loadMoreButtonCaption: {
         padding: 8,
         color: "#FFFFFF"
+    }
+};
+// Gallery text filter style
+export const galleryTextFilter = {
+    container: {
+        alignSelf: "baseline",
+        borderRadius: 30,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        backgroundColor: "#ccc",
+        justifyContent: "center"
+    },
+    caption: {
+        fontSize: 14,
+        fontWeight: "bold",
+        color: "#444"
+    },
+    textInputContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        borderWidth: 1,
+        borderColor: "#606671",
+        borderRadius: 6,
+        paddingEnd: 8
+    },
+    textInputOnFocusContainer: {
+        borderColor: brand.primary
+    },
+    textInput: { height: 40, marginStart: 12, width: "90%", color: "#A9ACB3" },
+    textInputClearIcon: {
+        justifyContent: "center",
+        alignContent: "center"
     }
 };
