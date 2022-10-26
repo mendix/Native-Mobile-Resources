@@ -621,42 +621,51 @@ export const gallery = {
         alignSelf: "stretch"
     },
     loadMoreButtonPressableContainer: {
+        // Ripplecolor and all ViewStyle properties are allowed
+        borderWidth: 1,
+        borderStyle: "solid",
+        rippleColor: button.container.rippleColor,
+        borderColor: button.primary.borderColor,
+        backgroundColor: button.primary.backgroundColor,
         alignItems: "center",
-        backgroundColor: brand.primary,
-        borderRadius: 4
+        justifyContent: "center",
+        borderRadius: button.container.borderRadius,
+        minWidth: button.container.minWidth,
+        minHeight: button.container.minHeight,
+        paddingVertical: button.container.paddingVertical,
+        paddingHorizontal: button.container.paddingHorizontal
     },
     loadMoreButtonCaption: {
-        padding: 8,
-        color: "#FFFFFF"
+        // All TextStyle properties are allowed
+        color: button.primary.color,
+        fontSize: button.caption.fontSize,
+        fontFamily: font.family,
+        fontWeight: button.caption.fontWeight,
+        lineHeight: font.lineHeight
     }
 };
 // Gallery text filter style
 export const galleryTextFilter = {
-    container: {
-        alignSelf: "baseline",
-        borderRadius: 30,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        backgroundColor: "#ccc",
-        justifyContent: "center"
-    },
-    caption: {
-        fontSize: 14,
-        fontWeight: "bold",
-        color: "#444"
-    },
     textInputContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        borderWidth: 1,
-        borderColor: "#606671",
-        borderRadius: 6,
+        borderWidth: input.input.borderWidth,
+        borderColor: input.input.borderColor,
+        borderRadius: input.input.borderRadius,
         paddingEnd: 8
     },
-    textInputOnFocusContainer: {
+    textInputContainerFocused: {
         borderColor: brand.primary
     },
-    textInput: { height: 40, marginStart: 12, width: "90%", color: "#A9ACB3" },
+    textInput: {
+        height: 40,
+        marginStart: spacing.regular,
+        width: "90%",
+        color: input.input.color,
+        backgroundColor: input.input.backgroundColor,
+        selectionColor: input.input.selectionColor,
+        placeholderTextColor: input.input.placeholderTextColor
+    },
     textInputClearIcon: {
         justifyContent: "center",
         alignContent: "center"
