@@ -608,6 +608,66 @@ export const slider = {
 // Background gradient style
 export const backgroundGradient = {
     container: {},
-    angle: 0,
-    opacity: 1
+};
+// Gallery style
+export const gallery = {
+    container: {},
+    emptyPlaceholder: {},
+    firstItem: {},
+    lastItem: {},
+    list: {},
+    listItem: { flexGrow: 1 },
+    loadMoreButtonContainer: {
+        alignSelf: "stretch"
+    },
+    loadMoreButtonPressableContainer: {
+        // Ripplecolor and all ViewStyle properties are allowed
+        borderWidth: 1,
+        borderStyle: "solid",
+        rippleColor: button.container.rippleColor,
+        borderColor: button.primary.borderColor,
+        backgroundColor: button.primary.backgroundColor,
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: button.container.borderRadius,
+        minWidth: button.container.minWidth,
+        minHeight: button.container.minHeight,
+        paddingVertical: button.container.paddingVertical,
+        paddingHorizontal: button.container.paddingHorizontal
+    },
+    loadMoreButtonCaption: {
+        // All TextStyle properties are allowed
+        color: button.primary.color,
+        fontSize: button.caption.fontSize,
+        fontFamily: font.family,
+        fontWeight: button.caption.fontWeight,
+        lineHeight: font.lineHeight
+    }
+};
+// Gallery text filter style
+export const galleryTextFilter = {
+    textInputContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        borderWidth: input.input.borderWidth,
+        borderColor: input.input.borderColor,
+        borderRadius: input.input.borderRadius,
+        paddingEnd: 8
+    },
+    textInputContainerFocused: {
+        borderColor: brand.primary
+    },
+    textInput: {
+        height: 40,
+        marginStart: spacing.regular,
+        width: "90%",
+        color: input.input.color,
+        backgroundColor: input.input.backgroundColor,
+        selectionColor: input.input.selectionColor,
+        placeholderTextColor: input.input.placeholderTextColor
+    },
+    textInputClearIcon: {
+        justifyContent: "center",
+        alignContent: "center"
+    }
 };
