@@ -1,0 +1,1 @@
+{"BranchName":"MOO-895_RN_Upgrade_PW","ModelerVersion":"9.24.0.395","ModelChanges":[{"Status":"Modified","UnitID":"143e93f2-8690-40da-9e82-43455eab7fed","UnitType":"Microflows$Nanoflow","UnitName":"ACT_RangeSliderPageOpen","Module":"RangeSlider"}],"RelatedStories":[],"isWebModelerCommit":false,"HasModelerVersion":true}
