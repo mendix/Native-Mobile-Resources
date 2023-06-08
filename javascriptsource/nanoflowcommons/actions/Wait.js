@@ -1,3 +1,5 @@
+// BEGIN EXTRA CODE
+// END EXTRA CODE
 /**
  * Wait for number of milliseconds before continuing nanoflow execution.
  * @param {Big} delay - The number of milliseconds to wait. This field is required.

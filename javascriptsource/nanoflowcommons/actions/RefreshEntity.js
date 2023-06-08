@@ -5,6 +5,8 @@
 // - the code between BEGIN USER CODE and END USER CODE
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
+// BEGIN EXTRA CODE
+// END EXTRA CODE
 /**
  * @param {string} entityToRefresh - Entity which will be refreshed.
  * @returns {Promise.<void>}
