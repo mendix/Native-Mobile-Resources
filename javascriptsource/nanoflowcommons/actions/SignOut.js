@@ -15,13 +15,13 @@
  * @returns {Promise.<boolean>}
  */
 async function SignOut() {
-  // BEGIN USER CODE
-  if (!mx.session.isGuest()) {
-    mx.logout();
-    return Promise.resolve(true);
-  }
-  return Promise.resolve(false);
-  // END USER CODE
+    // BEGIN USER CODE
+    if (!mx.session.isGuest()) {
+        mx.logout();
+        return Promise.resolve(true);
+    }
+    return Promise.resolve(false);
+    // END USER CODE
 }
 
 export { SignOut };

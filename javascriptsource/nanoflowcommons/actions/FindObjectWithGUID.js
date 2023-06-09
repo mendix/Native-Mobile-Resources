@@ -13,9 +13,9 @@
  * @returns {Promise.<MxObject>}
  */
 async function FindObjectWithGUID(list, objectGUID) {
-  // BEGIN USER CODE
-  return list.find((element) => element.getGuid() === objectGUID);
-  // END USER CODE
+    // BEGIN USER CODE
+    return list.find(element => element.getGuid() === objectGUID);
+    // END USER CODE
 }
 
 export { FindObjectWithGUID };

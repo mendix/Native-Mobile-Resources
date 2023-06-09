@@ -13,14 +13,12 @@
  * @returns {Promise.<string>}
  */
 async function GetGuid(entityObject) {
-  // BEGIN USER CODE
-  if (!entityObject) {
-    return Promise.reject(
-      new Error("Input parameter 'Entity object' is required.")
-    );
-  }
-  return Promise.resolve(entityObject.getGuid());
-  // END USER CODE
+    // BEGIN USER CODE
+    if (!entityObject) {
+        return Promise.reject(new Error("Input parameter 'Entity object' is required."));
+    }
+    return Promise.resolve(entityObject.getGuid());
+    // END USER CODE
 }
 
 export { GetGuid };

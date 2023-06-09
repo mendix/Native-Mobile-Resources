@@ -11,15 +11,16 @@
  * @returns {Promise.<boolean>}
  */
 async function ClearLocalStorage() {
-  // BEGIN USER CODE
-  try {
-    localStorage.clear();
-    return true;
-  } catch (e) {
-    console.error(e);
-    return false;
-  }
-  // END USER CODE
+    // BEGIN USER CODE
+    try {
+        localStorage.clear();
+        return true;
+    }
+    catch (e) {
+        console.error(e);
+        return false;
+    }
+    // END USER CODE
 }
 
 export { ClearLocalStorage };

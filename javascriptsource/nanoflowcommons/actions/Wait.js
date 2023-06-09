@@ -6,14 +6,14 @@
  * @returns {Promise.<void>}
  */
 async function Wait(delay) {
-  // BEGIN USER CODE
-  if (delay == null) {
-    return Promise.reject(new Error("Input parameter 'delay' is required."));
-  }
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(), Number(delay));
-  });
-  // END USER CODE
+    // BEGIN USER CODE
+    if (delay == null) {
+        return Promise.reject(new Error("Input parameter 'delay' is required."));
+    }
+    return new Promise(resolve => {
+        setTimeout(() => resolve(), Number(delay));
+    });
+    // END USER CODE
 }
 
 export { Wait };

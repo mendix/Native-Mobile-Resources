@@ -12,17 +12,17 @@
  * @returns {Promise.<void>}
  */
 async function RefreshEntity(entityToRefresh) {
-  // BEGIN USER CODE
-  if (!entityToRefresh) {
-    return Promise.reject(new Error("EntityToRefresh parameter is required"));
-  }
-  return new Promise((resolve) => {
-    mx.data.update({
-      entity: entityToRefresh,
-      callback: () => resolve(true),
+    // BEGIN USER CODE
+    if (!entityToRefresh) {
+        return Promise.reject(new Error("EntityToRefresh parameter is required"));
+    }
+    return new Promise(resolve => {
+        mx.data.update({
+            entity: entityToRefresh,
+            callback: () => resolve(true)
+        });
     });
-  });
-  // END USER CODE
+    // END USER CODE
 }
 
 export { RefreshEntity };

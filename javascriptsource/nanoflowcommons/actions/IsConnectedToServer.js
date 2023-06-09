@@ -11,15 +11,16 @@
  * @returns {Promise.<boolean>}
  */
 async function IsConnectedToServer() {
-  // BEGIN USER CODE
-  try {
-    const response = await fetch(mx.remoteUrl);
-    return response.ok;
-  } catch (err) {
-    console.error(err);
-    return false;
-  }
-  // END USER CODE
+    // BEGIN USER CODE
+    try {
+        const response = await fetch(mx.remoteUrl);
+        return response.ok;
+    }
+    catch (err) {
+        console.error(err);
+        return false;
+    }
+    // END USER CODE
 }
 
 export { IsConnectedToServer };
