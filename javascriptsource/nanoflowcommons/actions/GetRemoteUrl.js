@@ -11,9 +11,9 @@
  * @returns {Promise.<string>}
  */
 async function GetRemoteUrl() {
-    // BEGIN USER CODE
-    return mx.remoteUrl;
-    // END USER CODE
+  // BEGIN USER CODE
+  return mx.remoteUrl;
+  // END USER CODE
 }
 
 export { GetRemoteUrl };

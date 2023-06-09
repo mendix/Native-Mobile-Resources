@@ -10,30 +10,32 @@ const COUNTER_STORE = "idCounter";
 let locked = false;
 let currentCounter;
 function sleep(time) {
-    return new Promise(resolve => setTimeout(resolve, time));
+  return new Promise((resolve) => setTimeout(resolve, time));
 }
 async function initializeCounter() {
-    currentCounter = JSON.parse((await getItem(COUNTER_STORE)) || "-1");
+  currentCounter = JSON.parse((await getItem(COUNTER_STORE)) || "-1");
 }
 async function getItem(key) {
-    if (navigator && navigator.product === "ReactNative") {
-        const AsyncStorage = (await import('@react-native-community/async-storage')).default;
-        return AsyncStorage.getItem(key);
-    }
-    if (window) {
-        return window.localStorage.getItem(key);
-    }
-    throw new Error("No storage API available");
+  if (navigator && navigator.product === "ReactNative") {
+    const AsyncStorage = (await import("@react-native-community/async-storage"))
+      .default;
+    return AsyncStorage.getItem(key);
+  }
+  if (window) {
+    return window.localStorage.getItem(key);
+  }
+  throw new Error("No storage API available");
 }
 async function setItem(key, value) {
-    if (navigator && navigator.product === "ReactNative") {
-        const AsyncStorage = (await import('@react-native-community/async-storage')).default;
-        return AsyncStorage.setItem(key, value);
-    }
-    if (window) {
-        return window.localStorage.setItem(key, value);
-    }
-    throw new Error("No storage API available");
+  if (navigator && navigator.product === "ReactNative") {
+    const AsyncStorage = (await import("@react-native-community/async-storage"))
+      .default;
+    return AsyncStorage.setItem(key, value);
+  }
+  if (window) {
+    return window.localStorage.setItem(key, value);
+  }
+  throw new Error("No storage API available");
 }
 // END EXTRA CODE
 /**
@@ -41,21 +43,21 @@ async function setItem(key, value) {
  * @returns {Promise.<string>}
  */
 async function GenerateUniqueID() {
-    // BEGIN USER CODE
-    const sessionId = mx.session.getConfig("sessionObjectId");
-    const rnd = Math.round(Math.random() * 10000);
-    // eslint-disable-next-line no-unmodified-loop-condition
-    while (locked) {
-        await sleep(10);
-    }
-    locked = true;
-    if (typeof currentCounter === "undefined") {
-        await initializeCounter();
-    }
-    await setItem(COUNTER_STORE, JSON.stringify(++currentCounter));
-    locked = false;
-    return `${sessionId}:${currentCounter}:${rnd}`;
-    // END USER CODE
+  // BEGIN USER CODE
+  const sessionId = mx.session.getConfig("sessionObjectId");
+  const rnd = Math.round(Math.random() * 10000);
+  // eslint-disable-next-line no-unmodified-loop-condition
+  while (locked) {
+    await sleep(10);
+  }
+  locked = true;
+  if (typeof currentCounter === "undefined") {
+    await initializeCounter();
+  }
+  await setItem(COUNTER_STORE, JSON.stringify(++currentCounter));
+  locked = false;
+  return `${sessionId}:${currentCounter}:${rnd}`;
+  // END USER CODE
 }
 
 export { GenerateUniqueID };

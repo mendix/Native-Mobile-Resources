@@ -12,14 +12,14 @@
  * @returns {Promise.<void>}
  */
 async function ToggleSidebar() {
-    // BEGIN USER CODE
-    mx.ui.toggleSidebar();
-    // Web platform
-    if (window && !(navigator && navigator.product === "ReactNative")) {
-        document.dispatchEvent(new CustomEvent("toggleSidebar"));
-    }
-    return Promise.resolve();
-    // END USER CODE
+  // BEGIN USER CODE
+  mx.ui.toggleSidebar();
+  // Web platform
+  if (window && !(navigator && navigator.product === "ReactNative")) {
+    document.dispatchEvent(new CustomEvent("toggleSidebar"));
+  }
+  return Promise.resolve();
+  // END USER CODE
 }
 
 export { ToggleSidebar };

@@ -10,17 +10,15 @@
  * @returns {Promise.<"NanoflowCommons.Platform.Web"|"NanoflowCommons.Platform.Native_mobile"|"NanoflowCommons.Platform.Hybrid_mobile">}
  */
 async function GetPlatform() {
-    // BEGIN USER CODE
-    if (window && window.cordova) {
-        return Promise.resolve("Hybrid_mobile");
-    }
-    else if (navigator && navigator.product === "ReactNative") {
-        return Promise.resolve("Native_mobile");
-    }
-    else {
-        return Promise.resolve("Web");
-    }
-    // END USER CODE
+  // BEGIN USER CODE
+  if (window && window.cordova) {
+    return Promise.resolve("Hybrid_mobile");
+  } else if (navigator && navigator.product === "ReactNative") {
+    return Promise.resolve("Native_mobile");
+  } else {
+    return Promise.resolve("Web");
+  }
+  // END USER CODE
 }
 
 export { GetPlatform };
