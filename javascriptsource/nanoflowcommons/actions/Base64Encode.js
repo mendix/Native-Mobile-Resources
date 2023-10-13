@@ -4,12 +4,12 @@ import { Base64 } from 'js-base64';
 // BEGIN EXTRA CODE
 // END EXTRA CODE
 /**
- * @param {string} string
+ * @param {string} base64
  * @returns {Promise.<string>}
  */
-async function Base64Encode(string) {
+async function Base64Encode(base64) {
     // BEGIN USER CODE
-    return Base64.encode(string);
+    return Base64.encode(base64);
     // END USER CODE
 }
 
