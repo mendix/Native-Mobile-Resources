@@ -254,18 +254,18 @@ SOFTWARE.
 
 ---
 
-Name: react-native-blob-util
-Version: 0.16.2
+Name: react-native-file-viewer
+Version: 2.1.5
 License: MIT
 Private: false
-Description: A module provides upload, download, and files access API. Supports file stream read/write for process large files.
-Repository: https://github.com/RonRadtke/react-native-blob-util
+Description: Native file viewer for react-native
+Repository: git://github.com/vinzscam/react-native-file-viewer.git
 License Copyright:
 ===
 
 MIT License
 
-Copyright (c) 2017 xeiyan@gmail.com
+Copyright (c) 2017 Vincenzo Scamporlino
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -288,18 +288,18 @@ SOFTWARE.
 
 ---
 
-Name: react-native-file-viewer
-Version: 2.1.5
+Name: react-native-blob-util
+Version: 0.16.2
 License: MIT
 Private: false
-Description: Native file viewer for react-native
-Repository: git://github.com/vinzscam/react-native-file-viewer.git
+Description: A module provides upload, download, and files access API. Supports file stream read/write for process large files.
+Repository: https://github.com/RonRadtke/react-native-blob-util
 License Copyright:
 ===
 
 MIT License
 
-Copyright (c) 2017 Vincenzo Scamporlino
+Copyright (c) 2017 xeiyan@gmail.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
