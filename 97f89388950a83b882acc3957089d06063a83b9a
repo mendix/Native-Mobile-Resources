@@ -1,0 +1,1 @@
+{"BranchName":"lts/mx/9.24","ModelerVersion":"9.24.1.4658","ModelChanges":[{"Status":"Deleted","UnitID":"67b6b230-9ca1-425f-af4e-b8f8477c7eac","UnitType":"Constants$Constant","UnitName":"Nanoflow_Commons_Version","Module":"NanoflowCommons"}],"RelatedStories":[],"isWebModelerCommit":false,"SolutionVersion":"","HasModelerVersion":true}
