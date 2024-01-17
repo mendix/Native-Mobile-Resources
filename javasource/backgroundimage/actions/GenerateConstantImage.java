@@ -27,21 +27,16 @@ import com.mendix.webui.CustomJavaAction;
  */
 public class GenerateConstantImage extends CustomJavaAction<java.lang.Void>
 {
-	private final IMendixObject ImageEntity;
-	private final java.lang.Long Width;
-	private final java.lang.Long Height;
+	private IMendixObject ImageEntity;
+	private java.lang.Long Width;
+	private java.lang.Long Height;
 
-	public GenerateConstantImage(
-		IContext context,
-		IMendixObject _imageEntity,
-		java.lang.Long _width,
-		java.lang.Long _height
-	)
+	public GenerateConstantImage(IContext context, IMendixObject ImageEntity, java.lang.Long Width, java.lang.Long Height)
 	{
 		super(context);
-		this.ImageEntity = _imageEntity;
-		this.Width = _width;
-		this.Height = _height;
+		this.ImageEntity = ImageEntity;
+		this.Width = Width;
+		this.Height = Height;
 	}
 
 	@java.lang.Override
@@ -55,7 +50,6 @@ public class GenerateConstantImage extends CustomJavaAction<java.lang.Void>
 
 	/**
 	 * Returns a string representation of this action
-	 * @return a string representation of this action
 	 */
 	@java.lang.Override
 	public java.lang.String toString()
