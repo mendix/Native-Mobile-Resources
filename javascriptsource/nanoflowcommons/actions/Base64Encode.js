@@ -7,9 +7,9 @@ import { Base64 } from 'js-base64';
  * @param {string} base64
  * @returns {Promise.<string>}
  */
-async function Base64Encode(base64) {
+async function Base64Encode(stringToEncode) {
     // BEGIN USER CODE
-    return Base64.encode(base64);
+    return Base64.encode(stringToEncode);
     // END USER CODE
 }
 
