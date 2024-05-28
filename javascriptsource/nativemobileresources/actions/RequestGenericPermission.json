@@ -1,5 +1,6 @@
 {
   "nativeDependencies": {
+    "react-native-schedule-exact-alarm-permission": "0.1.4",
     "react-native-permissions": "3.3.1"
   }
 }
