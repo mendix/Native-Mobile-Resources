@@ -6,26 +6,56 @@
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
 import { Big } from "big.js";
-import { Alert, Platform } from 'react-native';
-import { check, RESULTS, request, openSettings, PERMISSIONS } from 'react-native-permissions';
+import { Alert, Platform, NativeModules } from 'react-native';
+import { PERMISSIONS as PERMISSIONS$1, check, RESULTS, request, openSettings } from 'react-native-permissions';
+import { getPermission } from 'react-native-schedule-exact-alarm-permission';
 
 // BEGIN EXTRA CODE
+const PERMISSIONS = {
+    ANDROID: {
+        ...PERMISSIONS$1.ANDROID,
+        SCHEDULE_EXACT_ALARM: "android.permission.SCHEDULE_EXACT_ALARM"
+    },
+    IOS: PERMISSIONS$1.IOS
+};
 function handleBlockedPermission(permission) {
     const permissionName = permission.replace(/_IOS|_ANDROID/, "");
-    Alert.alert("", `Please allow ${permissionName} access`, [
-        { text: "go to settings", onPress: () => openSettings() },
-        { text: "cancel" }
-    ]);
+    if (permissionName === "SCHEDULE_EXACT_ALARM") {
+        Alert.alert("", "Please allow setting alarms and reminders", [
+            { text: "Go to alarm settings", onPress: () => getPermission(), isPreferred: true },
+            { text: "Cancel", style: "cancel" }
+        ]);
+    }
+    else {
+        Alert.alert("", `Please allow ${permissionName} access`, [
+            { text: "Go to settings", onPress: () => openSettings(), isPreferred: true },
+            { text: "Cancel", style: "cancel" }
+        ]);
+    }
 }
 function mapPermissionName(permissionName) {
     if (Platform.OS === "ios") {
         const nameWithoutSuffix = permissionName.replace("_IOS", "");
         return PERMISSIONS.IOS[nameWithoutSuffix];
     }
-    else if (Platform.OS === "android") {
-        const nameWithoutSuffix = permissionName.replace("_ANDROID", "");
-        return PERMISSIONS.ANDROID[nameWithoutSuffix];
+    const nameWithoutSuffix = permissionName.replace("_ANDROID", "");
+    return PERMISSIONS.ANDROID[nameWithoutSuffix];
+}
+async function checkScheduleAlarm() {
+    if (NativeModules && !NativeModules.ScheduleEA) {
+        return Promise.reject(new Error("ScheduleEA module is not available in your app"));
     }
+    if (Platform.OS !== "android") {
+        return Promise.resolve("granted");
+    }
+    const checkPermissionPromise = new Promise(resolve => {
+        NativeModules.ScheduleEA.checkPermission((isEnabled) => {
+            resolve(isEnabled);
+        });
+    });
+    return checkPermissionPromise.then(result => {
+        return Promise.resolve(result ? "granted" : "blocked");
+    });
 }
 // END EXTRA CODE
 
@@ -43,7 +73,9 @@ export async function RequestGenericPermission(permission) {
         console.error(`${permission} permission is not found`);
         return Promise.resolve("unavailable");
     }
-    const permissionStatus = await check(mappedPermissionName);
+    const permissionStatus = mappedPermissionName === PERMISSIONS.ANDROID.SCHEDULE_EXACT_ALARM
+        ? await checkScheduleAlarm()
+        : await check(mappedPermissionName);
     switch (permissionStatus) {
         case RESULTS.GRANTED:
         case RESULTS.UNAVAILABLE:

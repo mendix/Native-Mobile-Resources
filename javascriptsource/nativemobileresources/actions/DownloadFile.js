@@ -5,7 +5,6 @@
 // - the code between BEGIN USER CODE and END USER CODE
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
-import "mx-global";
 import { Big } from "big.js";
 import { Platform } from 'react-native';
 import RNBlobUtil from 'react-native-blob-util';
@@ -53,7 +52,6 @@ export async function DownloadFile(file, openWithOS) {
     }
     const dirs = RNBlobUtil.fs.dirs;
     const fileName = file.get("Name");
-    console.error(fileName)
     const sanitizedFileName = sanitizeFileName(fileName);
     const baseDir = Platform.OS === "ios" ? dirs.DocumentDir : dirs.DownloadDir;
     const filePath = mx.data.getDocumentUrl(file.getGuid(), Number(file.get("changedDate")));
