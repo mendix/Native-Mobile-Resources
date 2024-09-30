@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "129739977419",
+    "project_id": "myapp.nativecomponentstestproject",
+    "storage_bucket": "myapp.nativecomponentstestproject"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129739977419:android:3cb16947bacf09add1614e",
+        "android_client_info": {
+          "package_name": "myapp.nativecomponentstestproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCzako04rDjD-7Vh9dcBAKZ79sR10GCIA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
