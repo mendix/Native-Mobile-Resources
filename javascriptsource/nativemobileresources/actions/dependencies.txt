@@ -113,7 +113,7 @@ SOFTWARE.
 ---
 
 Name: react-native-permissions
-Version: 3.3.1
+Version: 4.1.5
 License: MIT
 Private: false
 Description: An unified permissions API for React Native on iOS, Android and Windows
