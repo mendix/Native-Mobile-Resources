@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "984874022648",
+    "project_id": "nativecomponenttestproject",
+    "storage_bucket": "nativecomponenttestproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984874022648:android:d5ff794470907abca92d0d",
+        "android_client_info": {
+          "package_name": "myapp.nativecomponentstestproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjdwFc2MY0aPY03vyeArKPxzHMyuqb8RE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
