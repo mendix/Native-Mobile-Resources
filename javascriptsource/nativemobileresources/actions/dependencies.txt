@@ -78,12 +78,12 @@ SOFTWARE.
 ---
 
 Name: react-native-localize
-Version: 1.4.2
+Version: 3.2.1
 License: MIT
 Private: false
 Description: A toolbox for your React Native app localization.
-Repository: https://github.com/react-native-community/react-native-localize.git
-Homepage: https://github.com/react-native-community/react-native-localize
+Repository: https://github.com/zoontek/react-native-localize.git
+Homepage: https://github.com/zoontek/react-native-localize
 License Copyright:
 ===
 
@@ -113,7 +113,7 @@ SOFTWARE.
 ---
 
 Name: react-native-permissions
-Version: 3.3.1
+Version: 4.1.5
 License: MIT
 Private: false
 Description: An unified permissions API for React Native on iOS, Android and Windows

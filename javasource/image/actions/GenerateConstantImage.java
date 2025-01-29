@@ -21,11 +21,12 @@ import com.mendix.core.Core;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.webui.CustomJavaAction;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
 /**
  * Will generate a random image and set it to the passed image entity.
  */
-public class GenerateConstantImage extends CustomJavaAction<java.lang.Void>
+public class GenerateConstantImage extends UserAction<java.lang.Void>
 {
 	private final IMendixObject ImageEntity;
 	private final java.lang.Long Width;
