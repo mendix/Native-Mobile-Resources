@@ -160,7 +160,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ---
 
 Name: js-base64
-Version: 3.7.2
+Version: 3.7.7
 License: BSD-3-Clause
 Private: false
 Description: Yet another Base64 transcoder in pure-JS
