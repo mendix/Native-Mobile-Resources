@@ -20,3 +20,4 @@
 /vendorlib/temp/
 .DS_Store
 /.svn/
+/mprcontents/mprjournal*
