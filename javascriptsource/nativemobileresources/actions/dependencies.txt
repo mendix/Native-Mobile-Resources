@@ -1,16 +1,26 @@
-Name: react-native-biometrics
-Version: 3.0.1
+Name: react-native-touch-id
+Version: 4.4.1
+License: ISC
+Private: false
+Description: React Native authentication with the native Touch ID popup.
+Repository: https://github.com/naoufal/react-native-touch-id.git
+Homepage: https://github.com/naoufal/react-native-touch-id
+
+---
+
+Name: @react-native-camera-roll/camera-roll
+Version: 7.4.0
 License: MIT
 Private: false
-Description: React Native biometric functionality for signing and encryption
-Repository: git+https://github.com/SelfLender/react-native-biometrics.git
-Homepage: https://github.com/SelfLender/react-native-biometrics
+Description: React Native Camera Roll for iOS & Android
+Repository: https://github.com/react-native-cameraroll/react-native-cameraroll.git
+Homepage: https://github.com/react-native-cameraroll/react-native-cameraroll#readme
 License Copyright:
 ===
 
 MIT License
 
-Copyright (c) 2018-present, Self Lender, Inc.
+Copyright (c) 2015-present, Facebook, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -33,19 +43,19 @@ SOFTWARE.
 
 ---
 
-Name: @react-native-camera-roll/camera-roll
-Version: 7.4.0
+Name: react-native-localize
+Version: 3.2.1
 License: MIT
 Private: false
-Description: React Native Camera Roll for iOS & Android
-Repository: https://github.com/react-native-cameraroll/react-native-cameraroll.git
-Homepage: https://github.com/react-native-cameraroll/react-native-cameraroll#readme
+Description: A toolbox for your React Native app localization.
+Repository: https://github.com/zoontek/react-native-localize.git
+Homepage: https://github.com/zoontek/react-native-localize
 License Copyright:
 ===
 
 MIT License
 
-Copyright (c) 2015-present, Facebook, Inc.
+Copyright (c) 2017-present, Mathieu Acthernoene
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -99,41 +109,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-Name: react-native-localize
-Version: 3.2.1
-License: MIT
-Private: false
-Description: A toolbox for your React Native app localization.
-Repository: https://github.com/zoontek/react-native-localize.git
-Homepage: https://github.com/zoontek/react-native-localize
-License Copyright:
-===
-
-MIT License
-
-Copyright (c) 2017-present, Mathieu Acthernoene
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
 
 ---
 
@@ -1268,59 +1243,174 @@ SOFTWARE.
 
 ---
 
-Name: @notifee/react-native
-Version: 9.1.8
-License: Apache-2.0
+Name: react-native-push-notification
+Version: 8.1.1
+License: MIT
 Private: false
-Description: Notifee - a feature rich notifications library for React Native.
-Repository: git+https://github.com/invertase/notifee.git
+Description: React Native Local and Remote Notifications
+Repository: git+ssh://git@github.com:zo0r/react-native-push-notification.git
 License Copyright:
 ===
 
-Apache-2.0 License
-------------------
+The MIT License (MIT)
 
-Copyright (c) 2016-present Invertase Limited <oss@invertase.io>
+Copyright (c) 2015 Dieam
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this library except in compliance with the License.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-You may obtain a copy of the Apache-2.0 License at
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-
-
-Creative Commons Attribution 3.0 License
-----------------------------------------
-
-Copyright (c) 2016-present Invertase Limited <oss@invertase.io>
-
-Documentation and other instructional materials provided for this project
-(including on a separate documentation repository or it's documentation website) are
-licensed under the Creative Commons Attribution 3.0 License. Code samples/blocks
-contained therein are licensed under the Apache License, Version 2.0 (the "License"), as above.
-
-You may obtain a copy of the Creative Commons Attribution 3.0 License at
-
-    https://creativecommons.org/licenses/by/3.0/
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
 
-Notifee CORE License
---------------------
+---
 
-The Notifee "core" submodule on Android/iOS (e.g. `android/libs/notifee_core_release.aar`) is not Open Source
-but is distributed in minified & obfuscated form. A purchased license is required to use Notifee Core in
-release builds and is subject to the Notifee License terms which can be found at:
+Name: @react-native-community/push-notification-ios
+Version: 1.10.1
+License: MIT
+Private: false
+Description: React Native Push Notification API for iOS
+Repository: https://github.com/react-native-community/push-notification-ios.git
+Homepage: https://github.com/react-native-community/push-notification-ios#readme
+License Copyright:
+===
 
-   https://notifee.app/license-terms
+MIT License
+
+Copyright (c) 2020 react-native-community
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.% 
+
+---
+
+Name: invariant
+Version: 2.2.4
+License: MIT
+Private: false
+Description: invariant
+Repository: https://github.com/zertosh/invariant
+License Copyright:
+===
+
+MIT License
+
+Copyright (c) 2013-present, Facebook, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+---
+
+Name: loose-envify
+Version: 1.4.0
+License: MIT
+Private: false
+Description: Fast (and loose) selective `process.env` replacer using js-tokens instead of an AST
+Repository: git://github.com/zertosh/loose-envify.git
+Homepage: https://github.com/zertosh/loose-envify
+License Copyright:
+===
+
+The MIT License (MIT)
+
+Copyright (c) 2015 Andres Suarez <zertosh@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+---
+
+Name: js-tokens
+Version: 4.0.0
+License: MIT
+Private: false
+Description: A regex that tokenizes JavaScript.
+Repository: lydell/js-tokens
+License Copyright:
+===
+
+The MIT License (MIT)
+
+Copyright (c) 2014, 2015, 2016, 2017, 2018 Simon Lydell
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
 
 
 ---
@@ -3222,40 +3312,6 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
----
-
-Name: js-tokens
-Version: 4.0.0
-License: MIT
-Private: false
-Description: A regex that tokenizes JavaScript.
-Repository: lydell/js-tokens
-License Copyright:
-===
-
-The MIT License (MIT)
-
-Copyright (c) 2014, 2015, 2016, 2017, 2018 Simon Lydell
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
 
 
 ---

@@ -1,5 +1,5 @@
-import { NativeModules } from 'react-native';
-import notifee from '@notifee/react-native';
+import { Platform, NativeModules } from 'react-native';
+import PushNotification from 'react-native-push-notification';
 
 // BEGIN EXTRA CODE
 // END EXTRA CODE
@@ -9,9 +9,10 @@ import notifee from '@notifee/react-native';
  */
 async function SetBadgeNumber(badgeNumber) {
     // BEGIN USER CODE
-    // Documentation Documentation https://github.com/invertase/notifee
-    if (NativeModules && !NativeModules.NotifeeApiModule) {
-        return Promise.reject(new Error("Notifee native module is not available in your app"));
+    // Documentation https://github.com/zo0r/react-native-push-notification
+    const isIOS = Platform.OS === "ios";
+    if (NativeModules && isIOS && !NativeModules.RNCPushNotificationIOS) {
+        return Promise.reject(new Error("Notifications module is not available in your app"));
     }
     if (!badgeNumber) {
         return Promise.reject(new Error("Input parameter 'Badge number' is required"));
@@ -19,7 +20,7 @@ async function SetBadgeNumber(badgeNumber) {
     if (badgeNumber.lt(0)) {
         return Promise.reject(new Error("Input parameter 'Badge number' should be zero or greater"));
     }
-    return notifee.setBadgeCount(Number(badgeNumber));
+    return PushNotification.setApplicationIconBadgeNumber(Number(badgeNumber));
     // END USER CODE
 }
 
