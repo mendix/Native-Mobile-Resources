@@ -1,5 +1,5 @@
 {
   "nativeDependencies": {
-    "react-native-touch-id": "4.4.1"
+    "react-native-biometrics": "3.0.1"
   }
 }
