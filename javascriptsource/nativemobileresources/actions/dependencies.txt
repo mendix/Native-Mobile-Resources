@@ -43,19 +43,19 @@ SOFTWARE.
 
 ---
 
-Name: react-native-permissions
-Version: 4.1.5
+Name: react-native-image-picker
+Version: 7.2.3
 License: MIT
 Private: false
-Description: An unified permissions API for React Native on iOS, Android and Windows
-Repository: https://github.com/zoontek/react-native-permissions.git
-Homepage: https://github.com/zoontek/react-native-permissions#readme
+Description: A React Native module that allows you to use native UI to select media from the device library or directly from the camera
+Repository: https://github.com/react-native-image-picker/react-native-image-picker.git
+Homepage: https://github.com/react-native-image-picker/react-native-image-picker
 License Copyright:
 ===
 
 MIT License
 
-Copyright (c) 2019 Mathieu Acthernoene
+Copyright (c) 2015-present, Facebook, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -74,7 +74,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 
 ---
 
@@ -113,19 +112,19 @@ SOFTWARE.
 
 ---
 
-Name: react-native-image-picker
-Version: 7.2.3
+Name: react-native-permissions
+Version: 4.1.5
 License: MIT
 Private: false
-Description: A React Native module that allows you to use native UI to select media from the device library or directly from the camera
-Repository: https://github.com/react-native-image-picker/react-native-image-picker.git
-Homepage: https://github.com/react-native-image-picker/react-native-image-picker
+Description: An unified permissions API for React Native on iOS, Android and Windows
+Repository: https://github.com/zoontek/react-native-permissions.git
+Homepage: https://github.com/zoontek/react-native-permissions#readme
 License Copyright:
 ===
 
 MIT License
 
-Copyright (c) 2015-present, Facebook, Inc.
+Copyright (c) 2019 Mathieu Acthernoene
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -144,6 +143,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 
 ---
 
