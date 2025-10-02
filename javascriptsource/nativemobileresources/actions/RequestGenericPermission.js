@@ -7,7 +7,7 @@
 // Other code you write will be lost the next time you deploy the project.
 import { Big } from "big.js";
 import { Alert, Platform, NativeModules } from 'react-native';
-import { PERMISSIONS as PERMISSIONS$1, check, RESULTS, request, openSettings } from 'react-native-permissions';
+import { PERMISSIONS as PERMISSIONS$1, check, RESULTS, request, canScheduleExactAlarms, openSettings } from 'react-native-permissions';
 
 // BEGIN EXTRA CODE
 const PERMISSIONS = {
@@ -20,18 +20,26 @@ const PERMISSIONS = {
 function handleBlockedPermission(permission) {
     const permissionName = permission.replace(/_IOS|_ANDROID/, "");
     if (permissionName === "SCHEDULE_EXACT_ALARM") {
-        const RNExactAlarmPermission = require("react-native-schedule-exact-alarm-permission");
-        Alert.alert("", "Please allow setting alarms and reminders", [
-            { text: "Go to alarm settings", onPress: () => RNExactAlarmPermission.getPermission(), isPreferred: true },
+        return Alert.alert("", "Please allow setting alarms and reminders", [
+            {
+                text: "Go to alarm settings",
+                onPress: async () => {
+                    const canSchedule = await canScheduleExactAlarms();
+                    if (!canSchedule) {
+                        // Check if permission is already granted
+                        return openSettings("alarms");
+                    }
+                    return openSettings();
+                },
+                isPreferred: true
+            },
             { text: "Cancel", style: "cancel" }
         ]);
     }
-    else {
-        Alert.alert("", `Please allow ${permissionName} access`, [
-            { text: "Go to settings", onPress: () => openSettings(), isPreferred: true },
-            { text: "Cancel", style: "cancel" }
-        ]);
-    }
+    return Alert.alert("", `Please allow ${permissionName} access`, [
+        { text: "Go to settings", onPress: () => openSettings(), isPreferred: true },
+        { text: "Cancel", style: "cancel" }
+    ]);
 }
 function mapPermissionName(permissionName) {
     if (Platform.OS === "ios") {

@@ -236,7 +236,6 @@ export async function TakePicture(picture, pictureSource, pictureQuality, maximu
         ], { cancelable: false });
     }
     function handleImagePickerV4Error(errorCode, errorMessage) {
-        var _a;
         switch (errorCode) {
             case "camera_unavailable":
                 showAlert("The camera is unavailable", "");
@@ -245,7 +244,9 @@ export async function TakePicture(picture, pictureSource, pictureQuality, maximu
                 showAlert("This app does not have access to your photo library or camera", "To enable access, tap Settings and turn on Camera and Photos.");
                 break;
             case "others":
-                showAlert("Something went wrong.", (_a = `${errorMessage}.`) !== null && _a !== void 0 ? _a : "Something went wrong while trying to access your Camera or photo library.");
+                showAlert("Something went wrong.", errorMessage
+                    ? `${errorMessage}.`
+                    : "Something went wrong while trying to access your Camera or photo library.");
                 break;
             default:
                 showAlert("Something went wrong.", "Something went wrong while trying to access your Camera or photo library.");
