@@ -12,8 +12,8 @@ import { Big } from "big.js";
 
 /**
  * @param {MxObject} picture - This field is required.
- * @param {"HybridMobileActions.PictureSource.camera"|"HybridMobileActions.PictureSource.imageLibrary"} pictureSource - Select a picture from the library or the camera.
- * @param {"HybridMobileActions.PictureQuality.original"|"HybridMobileActions.PictureQuality.low"|"HybridMobileActions.PictureQuality.medium"|"HybridMobileActions.PictureQuality.high"|"HybridMobileActions.PictureQuality.custom"} pictureQuality - Set to empty to use default value 'medium'.
+ * @param {undefined|"camera"|"imageLibrary"} pictureSource - Select a picture from the library or the camera.
+ * @param {undefined|"original"|"low"|"medium"|"high"|"custom"} pictureQuality - Set to empty to use default value 'medium'.
  * @param {Big} maximumWidth - The picture will be scaled to this maximum pixel width, while maintaing the aspect ratio.
  * @param {Big} maximumHeight - The picture will be scaled to this maximum pixel height, while maintaing the aspect ratio.
  * @returns {Promise.<boolean>}
