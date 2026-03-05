@@ -83,7 +83,7 @@ async function TakePicture(picture, pictureSource, pictureQuality, maximumWidth,
                 const filename = /[^\/]*$/.exec(uri)[0];
                 const filePathWithoutFileScheme = uri.replace("file://", "");
                 mx.data.saveDocument(imageObject.getGuid(), filename, {}, blob, async () => {
-                    await NativeModules.NativeFsModule.remove(filePathWithoutFileScheme);
+                    await NativeModules.MendixNative.fsRemove(filePathWithoutFileScheme);
                     imageObject.set("Name", filename);
                     mx.data.commit({
                         mxobj: imageObject,
@@ -91,7 +91,7 @@ async function TakePicture(picture, pictureSource, pictureQuality, maximumWidth,
                         error: (error) => reject(error)
                     });
                 }, async (error) => {
-                    await NativeModules.NativeFsModule.remove(filePathWithoutFileScheme);
+                    await NativeModules.MendixNative.fsRemove(filePathWithoutFileScheme);
                     reject(error);
                 });
             })
