@@ -72,10 +72,19 @@ public class ReactNativeBlobUtilFileResp extends ResponseBody {
 
     @Override
     public long contentLength() {
-        if (originalBody.contentLength() > Integer.MAX_VALUE) {
+
+        /**
+         * 
+         * Okio buffer issue in current version seems to be fixed in the latest versions
+         * 
+         * limiting this was causing the download progress to stop at 2GB size but files still was downloading
+         * 
+         */
+
+        // if (originalBody.contentLength() > Integer.MAX_VALUE) {
             // This is a workaround for a bug Okio buffer where it can't handle larger than int.
-            return Integer.MAX_VALUE;
-        }
+            // return Integer.MAX_VALUE;
+        // }
         return originalBody.contentLength();
     }
 
