@@ -14,6 +14,7 @@ class ReactNativeBlobUtilConfig {
     public ReadableMap addAndroidDownloads;
     public Boolean trusty;
     public Boolean wifiOnly = false;
+    public String targetHostIp;
     public String key;
     public String mime;
     public Boolean auto;
@@ -32,6 +33,7 @@ class ReactNativeBlobUtilConfig {
         this.appendExt = options.hasKey("appendExt") ? options.getString("appendExt") : "";
         this.trusty = options.hasKey("trusty") && options.getBoolean("trusty");
         this.wifiOnly = options.hasKey("wifiOnly") && options.getBoolean("wifiOnly");
+        this.targetHostIp = options.hasKey("targetHostIp") ? options.getString("targetHostIp") : "";
         if (options.hasKey("addAndroidDownloads")) {
             this.addAndroidDownloads = options.getMap("addAndroidDownloads");
         }
