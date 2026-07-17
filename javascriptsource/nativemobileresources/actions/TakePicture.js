@@ -76,12 +76,18 @@ async function TakePicture(picture, pictureSource, pictureQuality, maximumWidth,
     }
     function storeFile(imageObject, uri) {
         return new Promise((resolve, reject) => {
-            fetch(uri)
-                .then(response => response.blob())
-                .then(blob => {
+            NativeModules.MxFileSystem.read(uri.replace("file://", ""))
+                .then((nativeBlob) => {
+                const blob = new Blob();
+                Object.assign(blob, { data: nativeBlob });
                 // eslint-disable-next-line no-useless-escape
                 const filename = /[^\/]*$/.exec(uri)[0];
                 const filePathWithoutFileScheme = uri.replace("file://", "");
+                // Set nativePayload so the patched FormData.prototype.append in NativeFileBackend
+                // replaces the blob value with { uri, name, type } for online uploads. The patch
+                // reads the third append() argument (fileName) and writes it onto nativePayload.name,
+                // which FormData.getParts() uses as the Content-Disposition filename.
+                blob.nativePayload = { uri: `file://${uri}`, name: filename, type: "*/*" };
                 mx.data.saveDocument(imageObject.getGuid(), filename, {}, blob, async () => {
                     await NativeModules.MendixNative.fsRemove(filePathWithoutFileScheme);
                     imageObject.set("Name", filename);
