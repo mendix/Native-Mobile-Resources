@@ -11,6 +11,9 @@ package backgroundimage.actions;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import com.mendix.core.Core;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
@@ -43,13 +46,15 @@ public class FileDocumentFromFile extends UserAction<java.lang.Boolean>
 	public java.lang.Boolean executeAction() throws Exception
 	{
 		// BEGIN USER CODE
+		File resolved = resolveFile(this.file);
+
 		try (
-			FileInputStream fis = new FileInputStream(new File(this.file))
+			FileInputStream fis = new FileInputStream(resolved)
 		) {
-			Core.storeFileDocumentContent(getContext(), fileDocument.getMendixObject(), 
-				this.file, fis);
+			Core.storeFileDocumentContent(getContext(), fileDocument.getMendixObject(),
+				resolved.getName(), fis);
 		}
-		
+
 		return true;
 		// END USER CODE
 	}
@@ -65,5 +70,42 @@ public class FileDocumentFromFile extends UserAction<java.lang.Boolean>
 	}
 
 	// BEGIN EXTRA CODE
+	/**
+	 * Resolves the given path to an existing file.
+	 *
+	 * Absolute paths are used as-is. A relative path would otherwise be resolved against the JVM
+	 * working directory, which differs between running locally from Studio Pro and a deployed app.
+	 * Relative paths are therefore resolved against the deployment directories reported by the
+	 * runtime configuration, so that e.g. 'model/resources/robot.svg' and 'robot.svg' both work.
+	 */
+	private static File resolveFile(String path) throws FileNotFoundException {
+		File asGiven = new File(path);
+		if (asGiven.isAbsolute() || asGiven.isFile()) {
+			return asGiven;
+		}
+
+		File resourcesPath = Core.getConfiguration().getResourcesPath();
+		String fileName = asGiven.getName();
+
+		// 'robot.svg' relative to <deployment>/model/resources, then 'model/resources/robot.svg'
+		// relative to <deployment>/model/resources and each of its parent directories.
+		List<File> candidates = new ArrayList<>();
+		candidates.add(new File(resourcesPath, fileName));
+		for (File dir = resourcesPath; dir != null; dir = dir.getParentFile()) {
+			candidates.add(new File(dir, path));
+		}
+		candidates.add(new File(Core.getConfiguration().getBasePath(), path));
+
+		for (File candidate : candidates) {
+			if (candidate.isFile()) {
+				return candidate;
+			}
+		}
+
+		throw new FileNotFoundException(
+			"Could not resolve file '" + path + "'. Looked for '" + fileName + "' in '"
+				+ resourcesPath.getAbsolutePath() + "'. Provide an absolute path, or place the file "
+				+ "in the project 'resources' directory so it is deployed to that location.");
+	}
 	// END EXTRA CODE
 }
