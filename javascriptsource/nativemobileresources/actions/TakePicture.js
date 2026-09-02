@@ -29,7 +29,7 @@ async function TakePicture(picture, pictureSource, pictureQuality, maximumWidth,
         return Promise.reject(new Error("Picture quality is set to 'Custom', but no maximum width or height was provided"));
     }
     // V3 dropped the feature of providing an action sheet so users can decide on which action to take, camera or library.
-    const nativeVersionMajor = ((_a = NativeModules === null || NativeModules === void 0 ? void 0 : NativeModules.ImagePickerManager) === null || _a === void 0 ? void 0 : _a.showImagePicker) ? 2 : 4;
+    const nativeVersionMajor = ((_a = NativeModules === null || NativeModules === undefined ? undefined : NativeModules.ImagePickerManager) === null || _a === undefined ? undefined : _a.showImagePicker) ? 2 : 4;
     const RNPermissions = nativeVersionMajor === 4 ? (await import('react-native-permissions')).default : null;
     try {
         const uri = await takePicture();
@@ -69,7 +69,7 @@ async function TakePicture(picture, pictureSource, pictureQuality, maximumWidth,
                     handleImagePickerV4Error(response.errorCode, response.errorMessage);
                     return resolve(undefined);
                 }
-                return resolve((_a = response === null || response === void 0 ? void 0 : response.assets) === null || _a === void 0 ? void 0 : _a[0].uri);
+                return resolve((_a = response === null || response === undefined ? undefined : response.assets) === null || _a === undefined ? undefined : _a[0].uri);
             }))
                 .catch(error => reject(error));
         });

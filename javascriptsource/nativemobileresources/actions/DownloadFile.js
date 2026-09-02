@@ -32,7 +32,7 @@ async function getUniqueFilePath(path, fileName) {
 function createCopyToMediaStoreFunction(fileName, mimeType) {
     return (filePath) => RNBlobUtil.MediaCollection.copyToMediaStore({
         name: fileName,
-        mimeType: mimeType !== null && mimeType !== void 0 ? mimeType : "*",
+        mimeType: mimeType !== null && mimeType !== undefined ? mimeType : "*",
         parentFolder: ""
     }, "Download", filePath);
 }
@@ -63,7 +63,7 @@ async function DownloadFile(file, openWithOS) {
         if (typeof mx.readFileBlob === "function") {
             const tempPath = await getUniqueFilePath(baseDir, sanitizedFileName);
             const base64Data = await mx.readFileBlob(filePath);
-            const base64Content = base64Data === null || base64Data === void 0 ? void 0 : base64Data.split(",")[1];
+            const base64Content = base64Data === null || base64Data === undefined ? undefined : base64Data.split(",")[1];
             await RNBlobUtil.fs.createFile(tempPath, base64Content, "base64");
             accessiblePath = await copyToMediaStore(tempPath);
             RNBlobUtil.fs.unlink(tempPath);
