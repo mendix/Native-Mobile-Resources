@@ -1,4 +1,3 @@
-import { Big } from "big.js";
 import DeviceInfo from 'react-native-device-info';
 import { getLocales, getCountry, getTimeZone, uses24HourClock } from 'react-native-localize';
 
