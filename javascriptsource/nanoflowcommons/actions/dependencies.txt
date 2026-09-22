@@ -34,19 +34,19 @@ SOFTWARE.
 
 ---
 
-Name: @react-native-community/geolocation
-Version: 3.4.0
+Name: react-native-nitro-geolocation
+Version: 1.4.3
 License: MIT
 Private: false
-Description: React Native Geolocation Module for iOS and Android
-Repository: https://github.com/michalchudziak/react-native-geolocation.git
-Homepage: https://github.com/michalchudziak/react-native-geolocation#README.md
+Description: Nitro-powered native geolocation for modern React Native apps
+Repository: git+https://github.com/jingjing2222/react-native-nitro-geolocation.git
+Homepage: https://react-native-nitro-geolocation.pages.dev
 License Copyright:
 ===
 
 MIT License
 
-Copyright (c) 2022-present, React Native Community
+Copyright (c) 2026 jingjing2222
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -66,6 +66,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+
+---
+
+Name: react-native-nitro-modules
+Version: 0.36.1
+License: MIT
+Private: false
+Description: Fast, type-safe native modules for React Native with statically compiled JSI bindings.
+Repository: git+https://github.com/mrousavy/nitro.git
+Homepage: https://nitro.margelo.com
 
 ---
 

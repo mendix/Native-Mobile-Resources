@@ -1,5 +1,6 @@
 {
   "nativeDependencies": {
-    "@react-native-community/geolocation": "3.4.0"
+    "react-native-nitro-geolocation": "1.4.3",
+    "react-native-nitro-modules": "0.36.1"
   }
 }
