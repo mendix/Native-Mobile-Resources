@@ -6,7 +6,7 @@
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
 import { Big } from "big.js";
-import Geolocation from '@react-native-community/geolocation';
+import { watchPosition, unwatch } from 'react-native-nitro-geolocation';
 
 // BEGIN EXTRA CODE
 // END EXTRA CODE
@@ -28,55 +28,38 @@ import Geolocation from '@react-native-community/geolocation';
  */
 export async function GetCurrentLocationMinimumAccuracy(timeout, maximumAge, highAccuracy, minimumAccuracy) {
 	// BEGIN USER CODE
-    let reactNativeModule;
-    let geolocationModule;
-    if (navigator && navigator.product === "ReactNative") {
-        reactNativeModule = require("react-native");
-        if (!reactNativeModule) {
-            return Promise.reject(new Error("React Native module could not be found"));
-        }
-        if (reactNativeModule.NativeModules.RNFusedLocation) {
-            geolocationModule = (await import('@react-native-community/geolocation')).default;
-        }
-        else if (reactNativeModule.NativeModules.RNCGeolocation) {
-            geolocationModule = Geolocation;
-        }
-        else {
-            return Promise.reject(new Error("Geolocation module could not be found"));
-        }
-    }
-    else if (navigator && navigator.geolocation) {
-        geolocationModule = navigator.geolocation;
-    }
-    else {
+    const isReactNative = navigator && navigator.product === "ReactNative";
+    const isWeb = navigator && navigator.geolocation;
+    if (!isReactNative && !isWeb) {
         return Promise.reject(new Error("Geolocation module could not be found"));
     }
     return new Promise((resolve, reject) => {
-        if (!geolocationModule) {
-            return reject(new Error("Geolocation module could not be found"));
-        }
-        const options = getOptions();
-        // This action is only required while running in PWA or hybrid.
-        if (navigator && (!navigator.product || navigator.product !== "ReactNative")) {
-            // This ensures the browser will not ignore the maximumAge https://stackoverflow.com/questions/3397585/navigator-geolocation-getcurrentposition-sometimes-works-sometimes-doesnt/31916631#31916631
-            geolocationModule.getCurrentPosition(
-            // eslint-disable-next-line @typescript-eslint/no-empty-function
-            () => { }, 
-            // eslint-disable-next-line @typescript-eslint/no-empty-function
-            () => { }, {});
-        }
-        const timeoutId = setTimeout(onTimeout, Number(timeout));
-        const watchId = geolocationModule.watchPosition(onSuccess, onError, options);
+        var _a;
+        const options = buildLocationOptions(timeout, maximumAge, highAccuracy);
         let lastAccruedPosition;
-        function createGeolocationObject(position) {
-            mx.data.create({
-                entity: "NanoflowCommons.Geolocation",
-                callback: mxObject => resolve(mapPositionToMxObject(mxObject, position)),
-                error: () => reject(new Error("Could not create 'NanoflowCommons.Geolocation' object to store location"))
+        // Derive the watchdog timeout from the same clamped value used for the location layer,
+        // so the two never disagree. `new Big(0)` is truthy, so we must not test `timeout`
+        // directly here or a configured `0` would fire the watchdog on the next tick.
+        const timeoutMs = (_a = options.timeout) !== null && _a !== undefined ? _a : 30000;
+        const timeoutId = setTimeout(onTimeout, timeoutMs);
+        let clearWatch;
+        if (isReactNative) {
+            const token = watchPosition(onSuccess, onError, options);
+            clearWatch = () => unwatch(token);
+        }
+        else {
+            // Workaround: browsers may ignore maximumAge on watchPosition unless getCurrentPosition is called first.
+            // https://stackoverflow.com/questions/3397585/navigator-geolocation-getcurrentposition-sometimes-works-sometimes-doesnt
+            navigator.geolocation.getCurrentPosition(() => { }, () => { }, {});
+            const watchId = navigator.geolocation.watchPosition(pos => onSuccess(normalizeWebPosition(pos)), err => onError({ code: err.code, message: err.message }), {
+                timeout: options.timeout,
+                maximumAge: options.maximumAge,
+                enableHighAccuracy: highAccuracy !== null && highAccuracy !== undefined ? highAccuracy : false
             });
+            clearWatch = () => navigator.geolocation.clearWatch(watchId);
         }
         function onTimeout() {
-            geolocationModule === null || geolocationModule === void 0 ? void 0 : geolocationModule.clearWatch(watchId);
+            clearWatch();
             if (lastAccruedPosition) {
                 createGeolocationObject(lastAccruedPosition);
             }
@@ -87,7 +70,7 @@ export async function GetCurrentLocationMinimumAccuracy(timeout, maximumAge, hig
         function onSuccess(position) {
             if (!minimumAccuracy || Number(minimumAccuracy) >= position.coords.accuracy) {
                 clearTimeout(timeoutId);
-                geolocationModule === null || geolocationModule === void 0 ? void 0 : geolocationModule.clearWatch(watchId);
+                clearWatch();
                 createGeolocationObject(position);
             }
             else {
@@ -97,47 +80,82 @@ export async function GetCurrentLocationMinimumAccuracy(timeout, maximumAge, hig
             }
         }
         function onError(error) {
-            return reject(new Error(error.message));
+            clearTimeout(timeoutId);
+            clearWatch();
+            // Best effort within a timeout: if we already captured a usable (though not yet
+            // minimum-accuracy) fix, return it instead of failing on a transient error such as
+            // POSITION_UNAVAILABLE. Mirrors the onTimeout fallback.
+            if (lastAccruedPosition) {
+                createGeolocationObject(lastAccruedPosition);
+            }
+            else {
+                reject(new Error(error.message));
+            }
         }
-        function getOptions() {
-            let timeoutNumber = timeout && Number(timeout.toString());
-            const maximumAgeNumber = maximumAge && Number(maximumAge.toString());
-            // If the timeout is 0 or undefined (empty), it causes a crash on iOS.
-            // If the timeout is undefined (empty); we set timeout to 30 sec (default timeout)
-            // If the timeout is 0; we set timeout to 1 hour (no timeout)
-            if ((reactNativeModule === null || reactNativeModule === void 0 ? void 0 : reactNativeModule.Platform.OS) === "ios") {
-                if (timeoutNumber === undefined) {
-                    timeoutNumber = 30000;
-                }
-                else if (timeoutNumber === 0) {
-                    timeoutNumber = 3600000;
-                }
-            }
-            return {
-                timeout: timeoutNumber,
-                maximumAge: maximumAgeNumber,
-                enableHighAccuracy: highAccuracy
-            };
-        }
-        function mapPositionToMxObject(mxObject, position) {
-            mxObject.set("Timestamp", new Date(position.timestamp));
-            mxObject.set("Latitude", new Big(position.coords.latitude.toFixed(8)));
-            mxObject.set("Longitude", new Big(position.coords.longitude.toFixed(8)));
-            mxObject.set("Accuracy", new Big(position.coords.accuracy.toFixed(8)));
-            if (position.coords.altitude != null) {
-                mxObject.set("Altitude", new Big(position.coords.altitude.toFixed(8)));
-            }
-            if (position.coords.altitudeAccuracy != null && position.coords.altitudeAccuracy !== -1) {
-                mxObject.set("AltitudeAccuracy", new Big(position.coords.altitudeAccuracy.toFixed(8)));
-            }
-            if (position.coords.heading != null && position.coords.heading !== -1) {
-                mxObject.set("Heading", new Big(position.coords.heading.toFixed(8)));
-            }
-            if (position.coords.speed != null && position.coords.speed !== -1) {
-                mxObject.set("Speed", new Big(position.coords.speed.toFixed(8)));
-            }
-            return mxObject;
+        function createGeolocationObject(position) {
+            mx.data.create({
+                entity: "NanoflowCommons.Geolocation",
+                callback: mxObject => resolve(mapPositionToMxObject(mxObject, position)),
+                error: () => reject(new Error("Could not create 'NanoflowCommons.Geolocation' object to store location"))
+            });
         }
     });
+    function buildLocationOptions(timeout, maximumAge, highAccuracy) {
+        let timeoutNumber = timeout ? timeout.toNumber() : undefined;
+        const maximumAgeNumber = maximumAge ? maximumAge.toNumber() : undefined;
+        // Normalize the timeout so the watchdog and the location layer always agree, on every platform:
+        // - undefined (empty) -> 30 sec (default timeout)
+        // - 0 -> 1 hour (treated as "no timeout")
+        // A timeout of 0 or undefined also crashes on iOS, and on web `timeout: 0` means
+        // "fail immediately with TIMEOUT" on every update, so it must never reach the location layer.
+        if (timeoutNumber === undefined) {
+            timeoutNumber = 30000;
+        }
+        else if (timeoutNumber === 0) {
+            timeoutNumber = 3600000;
+        }
+        return {
+            timeout: timeoutNumber,
+            maximumAge: maximumAgeNumber,
+            accuracy: highAccuracy ? { android: "high", ios: "best" } : { android: "balanced", ios: "hundredMeters" }
+        };
+    }
+    // NOTE: `normalizeWebPosition` is duplicated verbatim in `GetCurrentLocation.ts`.
+    // The Mendix action model does not allow sharing code across action files, so if you change this
+    // function, keep the copy in the other action in sync.
+    function normalizeWebPosition(pos) {
+        var _a, _b, _c, _d;
+        return {
+            coords: {
+                latitude: pos.coords.latitude,
+                longitude: pos.coords.longitude,
+                altitude: (_a = pos.coords.altitude) !== null && _a !== undefined ? _a : null,
+                accuracy: pos.coords.accuracy,
+                altitudeAccuracy: (_b = pos.coords.altitudeAccuracy) !== null && _b !== undefined ? _b : null,
+                heading: (_c = pos.coords.heading) !== null && _c !== undefined ? _c : null,
+                speed: (_d = pos.coords.speed) !== null && _d !== undefined ? _d : null
+            },
+            timestamp: pos.timestamp
+        };
+    }
+    function mapPositionToMxObject(mxObject, pos) {
+        mxObject.set("Timestamp", new Date(pos.timestamp));
+        mxObject.set("Latitude", new Big(pos.coords.latitude.toFixed(8)));
+        mxObject.set("Longitude", new Big(pos.coords.longitude.toFixed(8)));
+        mxObject.set("Accuracy", new Big(pos.coords.accuracy.toFixed(8)));
+        if (pos.coords.altitude != null) {
+            mxObject.set("Altitude", new Big(pos.coords.altitude.toFixed(8)));
+        }
+        if (pos.coords.altitudeAccuracy != null && pos.coords.altitudeAccuracy !== -1) {
+            mxObject.set("AltitudeAccuracy", new Big(pos.coords.altitudeAccuracy.toFixed(8)));
+        }
+        if (pos.coords.heading != null && pos.coords.heading !== -1) {
+            mxObject.set("Heading", new Big(pos.coords.heading.toFixed(8)));
+        }
+        if (pos.coords.speed != null && pos.coords.speed !== -1) {
+            mxObject.set("Speed", new Big(pos.coords.speed.toFixed(8)));
+        }
+        return mxObject;
+    }
 	// END USER CODE
 }
