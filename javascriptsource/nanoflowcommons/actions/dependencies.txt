@@ -70,7 +70,7 @@ SOFTWARE.
 ---
 
 Name: react-native-nitro-modules
-Version: 0.36.1
+Version: 0.37.0
 License: MIT
 Private: false
 Description: Fast, type-safe native modules for React Native with statically compiled JSI bindings.
@@ -833,7 +833,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ---
 
 Name: brace-expansion
-Version: 5.0.8
+Version: 5.0.12
 License: MIT
 Private: false
 Description: Brace expansion as known from sh/bash
