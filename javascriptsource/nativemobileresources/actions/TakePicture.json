@@ -1,6 +1,6 @@
 {
   "nativeDependencies": {
-    "react-native-permissions": "5.5.1",
-    "react-native-image-picker": "7.2.3"
+    "react-native-image-picker": "7.2.3",
+    "react-native-permissions": "5.5.1"
   }
 }
