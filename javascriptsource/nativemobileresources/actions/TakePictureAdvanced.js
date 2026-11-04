@@ -1,6 +1,7 @@
-import { NativeModules, Alert, Platform, Linking } from 'react-native';
+import { NativeFileSystem } from 'mendix-native';
+import { Platform, Alert, Linking } from 'react-native';
 import { launchImageLibrary, launchCamera } from 'react-native-image-picker';
-import { getLocales } from 'react-native-localize';
+import RNPermissions from 'react-native-permissions';
 
 // BEGIN EXTRA CODE
 // END EXTRA CODE
@@ -23,7 +24,6 @@ import { getLocales } from 'react-native-localize';
  */
 async function TakePictureAdvanced(picture, pictureSource, pictureQuality, maximumWidth, maximumHeight) {
     // BEGIN USER CODE
-    var _a;
     if (!picture) {
         return Promise.reject(new Error("Input parameter 'Picture' is required"));
     }
@@ -34,50 +34,27 @@ async function TakePictureAdvanced(picture, pictureSource, pictureQuality, maxim
         return Promise.reject(new Error("Picture quality is set to 'Custom', but no maximum width or height was provided"));
     }
     // V3 dropped the feature of providing an action sheet so users can decide on which action to take, camera or library.
-    const nativeVersionMajor = ((_a = NativeModules === null || NativeModules === undefined ? undefined : NativeModules.ImagePickerManager) === null || _a === undefined ? undefined : _a.showImagePicker) ? 2 : 4;
-    const RNPermissions = nativeVersionMajor === 4 ? (await import('react-native-permissions')).default : null;
+    // react-native-image-picker v7.2.3 is always v4+ (no legacy action sheet API)
     const resultObject = await createMxObject("NativeMobileResources.ImageMetaData");
     try {
         const response = await takePicture();
-        let pictureTaken;
-        if (nativeVersionMajor === 2) {
-            const responseV2 = response;
-            if (!responseV2 || !responseV2.uri) {
-                return Promise.resolve(resultObject);
-            }
-            const responseV2Uri = responseV2.uri;
-            pictureTaken = await storeFile(picture, responseV2Uri);
-            resultObject.set("PictureTaken", pictureTaken);
-            resultObject.set("URI", responseV2Uri);
-            resultObject.set("IsVertical", responseV2.isVertical);
-            resultObject.set("Width", responseV2.width);
-            resultObject.set("Height", responseV2.height);
-            resultObject.set("FileName", 
-            // eslint-disable-next-line no-useless-escape
-            responseV2.fileName ? responseV2.fileName : /[^\/]*$/.exec(responseV2Uri)[0]);
-            resultObject.set("FileSize", responseV2.fileSize);
-            resultObject.set("FileType", responseV2.type);
+        if (!response || !response.assets || !response.assets[0] || !response.assets[0].uri) {
+            return Promise.resolve(resultObject);
         }
-        else {
-            const responseV1 = response;
-            if (!responseV1 || !responseV1.assets || !responseV1.assets[0] || !responseV1.assets[0].uri) {
-                return Promise.resolve(resultObject);
-            }
-            const responseV1Assets = responseV1.assets[0];
-            const responseV1Uri = responseV1.assets[0].uri;
-            pictureTaken = await storeFile(picture, responseV1Uri);
-            resultObject.set("PictureTaken", pictureTaken);
-            resultObject.set("URI", responseV1Uri);
-            // Note:  V4 asset doesn't include isVertical
-            resultObject.set("Width", responseV1Assets.width);
-            resultObject.set("Height", responseV1Assets.height);
-            resultObject.set("FileName", responseV1Assets.fileName
-                ? responseV1Assets.fileName
-                : // eslint-disable-next-line no-useless-escape
-                    /[^\/]*$/.exec(responseV1Uri)[0]);
-            resultObject.set("FileSize", responseV1Assets.fileSize);
-            resultObject.set("FileType", responseV1Assets.type);
-        }
+        const asset = response.assets[0];
+        const uri = response.assets[0].uri;
+        const pictureTaken = await storeFile(picture, uri);
+        resultObject.set("PictureTaken", pictureTaken);
+        resultObject.set("URI", uri);
+        // Note: V4 asset doesn't include isVertical
+        resultObject.set("Width", asset.width);
+        resultObject.set("Height", asset.height);
+        resultObject.set("FileName", asset.fileName
+            ? asset.fileName
+            : // eslint-disable-next-line no-useless-escape
+                /[^\/]*$/.exec(uri)[0]);
+        resultObject.set("FileSize", asset.fileSize);
+        resultObject.set("FileType", asset.type);
         return Promise.resolve(resultObject);
     }
     catch (error) {
@@ -90,24 +67,12 @@ async function TakePictureAdvanced(picture, pictureSource, pictureQuality, maxim
     }
     function takePicture() {
         return new Promise((resolve, reject) => {
-            const options = nativeVersionMajor === 2 ? getOptionsV2() : getOptions();
+            const options = getOptions();
             getPictureMethod()
                 .then(method => method(options, (response) => {
                 if (response.didCancel) {
                     return resolve(undefined);
                 }
-                if (nativeVersionMajor === 2) {
-                    const responseV2 = response;
-                    if (responseV2.error) {
-                        const unhandledError = handleImagePickerV2Error(responseV2.error);
-                        if (!unhandledError) {
-                            return resolve(undefined);
-                        }
-                        return reject(new Error(responseV2.error));
-                    }
-                    return resolve(responseV2);
-                }
-                response = response;
                 if (response.errorCode) {
                     handleImagePickerV4Error(response.errorCode, response.errorMessage);
                     return resolve(undefined);
@@ -119,7 +84,7 @@ async function TakePictureAdvanced(picture, pictureSource, pictureQuality, maxim
     }
     async function safeRemove(filePath) {
         try {
-            await NativeModules.MxFileSystem.remove(filePath);
+            await NativeFileSystem.remove(filePath);
         }
         catch (error) {
             console.warn(`Failed to remove file at ${filePath}. Error: ${error}`);
@@ -128,7 +93,7 @@ async function TakePictureAdvanced(picture, pictureSource, pictureQuality, maxim
     }
     function storeFile(imageObject, uri) {
         return new Promise((resolve, reject) => {
-            NativeModules.MxFileSystem.read(uri.replace("file://", ""))
+            NativeFileSystem.read(uri.replace("file://", ""))
                 .then((nativeBlob) => {
                 const blob = new Blob();
                 Object.assign(blob, { data: nativeBlob });
@@ -158,7 +123,7 @@ async function TakePictureAdvanced(picture, pictureSource, pictureQuality, maxim
     }
     async function getPictureMethod() {
         async function handleCameraRequest() {
-            if (Platform.OS === "android" && nativeVersionMajor === 4) {
+            if (Platform.OS === "android") {
                 await checkAndMaybeRequestAndroidPermission();
             }
             return launchCamera;
@@ -197,36 +162,6 @@ async function TakePictureAdvanced(picture, pictureSource, pictureQuality, maxim
                 break;
         }
     }
-    function getOptionsV2() {
-        const { maxWidth, maxHeight } = getPictureQuality();
-        const [language] = getLocales().map(local => local.languageCode);
-        const isDutch = language === "nl";
-        return {
-            mediaType: "photo",
-            maxWidth,
-            maxHeight,
-            noData: true,
-            title: isDutch ? "Foto toevoegen" : "Select a photo",
-            cancelButtonTitle: isDutch ? "Annuleren" : "Cancel",
-            takePhotoButtonTitle: isDutch ? "Foto maken" : "Take photo",
-            chooseFromLibraryButtonTitle: isDutch ? "Kies uit bibliotheek" : "Choose from library",
-            permissionDenied: {
-                title: isDutch
-                    ? "Deze app heeft geen toegang tot uw camera of foto bibliotheek"
-                    : "This app does not have access to your camera or photo library",
-                text: isDutch
-                    ? "Ga naar Instellingen > Privacy om toegang tot uw camera en bestanden te verlenen."
-                    : "To enable access, tap Settings > Privacy and turn on Camera and Photos/Storage.",
-                reTryTitle: isDutch ? "Instellingen" : "Settings",
-                okTitle: isDutch ? "Annuleren" : "Cancel"
-            },
-            storageOptions: {
-                skipBackup: true,
-                cameraRoll: false,
-                privateDirectory: true
-            }
-        };
-    }
     function getOptions() {
         const { maxWidth, maxHeight } = getPictureQuality();
         return {
@@ -259,26 +194,6 @@ async function TakePictureAdvanced(picture, pictureSource, pictureQuality, maxim
                     maxWidth: Number(maximumWidth),
                     maxHeight: Number(maximumHeight)
                 };
-        }
-    }
-    function handleImagePickerV2Error(error) {
-        const ERRORS = {
-            AndroidPermissionDenied: "Permissions weren't granted",
-            iOSPhotoLibraryPermissionDenied: "Photo library permissions not granted",
-            iOSCameraPermissionDenied: "Camera permissions not granted"
-        };
-        switch (error) {
-            case ERRORS.iOSPhotoLibraryPermissionDenied:
-                showAlert("This app does not have access to your photo library", "To enable access, tap Settings and turn on Photos.");
-                return;
-            case ERRORS.iOSCameraPermissionDenied:
-                showAlert("This app does not have access to your camera", "To enable access, tap Settings and turn on Camera.");
-                return;
-            case ERRORS.AndroidPermissionDenied:
-                // Ignore this error because the image picker plugin already shows an alert in this case.
-                return;
-            default:
-                return error;
         }
     }
     function showAlert(title, message) {
