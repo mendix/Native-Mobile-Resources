@@ -6,8 +6,7 @@
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
 import { Big } from "big.js";
-import { NativeModules } from 'react-native';
-import notifee from '@notifee/react-native';
+import notifee from 'react-native-notify-kit';
 
 // BEGIN EXTRA CODE
 // END EXTRA CODE
@@ -19,9 +18,6 @@ import notifee from '@notifee/react-native';
 export async function CancelScheduledNotification(notificationId) {
 	// BEGIN USER CODE
     // Documentation Documentation https://github.com/invertase/notifee
-    if (NativeModules && !NativeModules.NotifeeApiModule) {
-        return Promise.reject(new Error("Notifee native module is not available in your app"));
-    }
     if (!notificationId) {
         return Promise.reject(new Error("Input parameter 'Notification id' is required"));
     }

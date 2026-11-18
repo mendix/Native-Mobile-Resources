@@ -6,8 +6,8 @@
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
 import { Big } from "big.js";
-import { Platform, NativeModules } from 'react-native';
-import { PERMISSIONS as PERMISSIONS$1, check } from 'react-native-permissions';
+import { Platform } from 'react-native';
+import { PERMISSIONS as PERMISSIONS$1, check, canScheduleExactAlarms } from 'react-native-permissions';
 
 // BEGIN EXTRA CODE
 const PERMISSIONS = {
@@ -26,20 +26,11 @@ function mapPermissionName(permissionName) {
     return PERMISSIONS.ANDROID[nameWithoutSuffix];
 }
 async function checkScheduleAlarm() {
-    if (NativeModules && !NativeModules.ScheduleEA) {
-        return Promise.reject(new Error("ScheduleEA module is not available in your app"));
-    }
     if (Platform.OS !== "android") {
         return Promise.resolve("granted");
     }
-    const checkPermissionPromise = new Promise(resolve => {
-        NativeModules.ScheduleEA.checkPermission((isEnabled) => {
-            resolve(isEnabled);
-        });
-    });
-    return checkPermissionPromise.then(result => {
-        return Promise.resolve(result ? "granted" : "blocked");
-    });
+    const canSchedule = await canScheduleExactAlarms();
+    return canSchedule ? "granted" : "blocked";
 }
 // END EXTRA CODE
 

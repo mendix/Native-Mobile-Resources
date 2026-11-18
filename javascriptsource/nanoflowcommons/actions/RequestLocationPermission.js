@@ -68,7 +68,7 @@ export async function RequestLocationPermission() {
         }
         if (Platform.OS === "android") {
             const hasPermission = await hasPermissionAndroid();
-            return hasPermission !== null && hasPermission !== void 0 ? hasPermission : false;
+            return hasPermission !== null && hasPermission !== undefined ? hasPermission : false;
         }
         return Promise.reject(new Error("Unsupported platform"));
     };

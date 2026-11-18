@@ -1,5 +1,5 @@
 {
   "nativeDependencies": {
-    "react-native-blob-util": "0.24.7"
+    "react-native-blob-util": "0.24.11"
   }
 }

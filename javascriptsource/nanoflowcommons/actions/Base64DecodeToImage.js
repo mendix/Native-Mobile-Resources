@@ -7,7 +7,6 @@
 // Other code you write will be lost the next time you deploy the project.
 import { Big } from "big.js";
 import { Base64 } from 'js-base64';
-import RNBlobUtil from 'react-native-blob-util';
 
 // BEGIN EXTRA CODE
 // END EXTRA CODE
@@ -28,6 +27,8 @@ export async function Base64DecodeToImage(base64, image) {
     // Native platform
     if (navigator && navigator.product === "ReactNative") {
         try {
+            const { NativeFileSystem } = await import('mendix-native');
+            const RNBlobUtil = (await import('react-native-blob-util')).default;
             // Remove data URI prefix if present (e.g., "data:image/png;base64,")
             let cleanBase64 = base64;
             if (base64.includes(",")) {
@@ -40,18 +41,38 @@ export async function Base64DecodeToImage(base64, image) {
                 throw new Error("Invalid base64 format");
             }
             // Create a temporary file path
-            const tempPath = `${RNBlobUtil.fs.dirs.CacheDir}/temp_image_${Date.now()}.png`;
+            const fileName = `image_${Date.now()}.png`;
+            const tempPath = `${RNBlobUtil.fs.dirs.CacheDir}/${fileName}`;
             // Write Base64 data to a temporary file
             await RNBlobUtil.fs.writeFile(tempPath, cleanBase64, "base64");
-            // Fetch the file as a blob
-            const res = await fetch(`file://${tempPath}`);
-            const blob = await res.blob();
+            // Read the file into the native blob store so offline mode works:
+            // NativeFileBackend.storeFile calls NativeFileSystem.save(blob.data, path)
+            // and blob.close() — a plain object has no .data getter or .close(), which
+            // crashes iOS via [NSInvocation invokeWithTarget:].
+            const nativeBlob = await NativeFileSystem.read(tempPath.replace("file://", ""));
+            // Normalize: MxFileSystem.read may return 'length' instead of 'size'.
+            const blobData = { ...nativeBlob };
+            if (blobData.size === undefined && blobData.length !== undefined) {
+                blobData.size = blobData.length;
+            }
+            const blob = new Blob();
+            Object.assign(blob, { data: blobData });
+            // Set nativePayload so the patched FormData.prototype.append in NativeFileBackend
+            // replaces the blob value with { uri, name, type } for online uploads. The patch
+            // reads the third append() argument (fileName) and writes it onto nativePayload.name,
+            // which FormData.getParts() uses as the Content-Disposition filename.
+            blob.nativePayload = { uri: `file://${tempPath}`, name: fileName, type: "image/png" };
+            const fileBlob = blob;
             return new Promise((resolve, reject) => {
-                mx.data.saveDocument(image.getGuid(), "camera image", {}, blob, () => {
-                    RNBlobUtil.fs.unlink(tempPath).catch(e => console.info("Temp file cleanup failed:", e));
+                mx.data.saveDocument(image.getGuid(), fileName, {}, fileBlob, () => {
+                    RNBlobUtil.fs
+                        .unlink(tempPath)
+                        .catch((e) => console.info("Temp file cleanup failed:", e));
                     resolve(true);
                 }, error => {
-                    RNBlobUtil.fs.unlink(tempPath).catch(e => console.info("Temp file cleanup failed:", e));
+                    RNBlobUtil.fs
+                        .unlink(tempPath)
+                        .catch((e) => console.info("Temp file cleanup failed:", e));
                     reject(error);
                 });
             });
